@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { TechIcon } from "@/components/TechIcon";
 import { Mail, Phone, MessageSquare } from "lucide-react";
 
@@ -14,9 +15,14 @@ export function Footer() {
 
                     {/* Column 1: Identity */}
                     <div className="space-y-4">
-                        <div>
-                            <h3 className="text-xl font-bold text-foreground tracking-tight">Joseph Awer</h3>
-                            <p className="text-sm text-muted-foreground">Software Developer | Mobile & Web</p>
+                        <div className="flex items-center gap-3">
+                            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-white/10 shrink-0">
+                                <Image src="/JOSEPH.JPG" alt="Joseph Awer" fill className="object-cover" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-foreground tracking-tight">Joseph Awer</h3>
+                                <p className="text-xs text-muted-foreground">Software Developer</p>
+                            </div>
                         </div>
                         <p className="text-xs text-muted-foreground/60 pt-4">
                             &copy; {currentYear} Joseph Awer.<br />

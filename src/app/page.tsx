@@ -4,6 +4,7 @@ import { FeaturedProjects } from "@/components/home/FeaturedProjects";
 import { TechnicalDomains } from "@/components/home/TechnicalDomains";
 import { Mindset } from "@/components/home/Mindset";
 import { ClosingCTA } from "@/components/home/ClosingCTA";
+import { WorkExperience } from "@/components/home/WorkExperience";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <EngineeringFocus />
       <FeaturedProjects />
       <TechnicalDomains />
+      <WorkExperience />
       <Mindset />
       <ClosingCTA />
     </main>

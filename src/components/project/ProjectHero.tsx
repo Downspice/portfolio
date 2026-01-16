@@ -6,6 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { TechIcon } from "@/components/TechIcon";
+import Image from "next/image";
 
 export function ProjectHero({ project }: { project: CaseStudy }) {
     return (
@@ -38,7 +39,16 @@ export function ProjectHero({ project }: { project: CaseStudy }) {
                         <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-foreground text-balance mb-6">
                             {project.title}
                         </h1>
-                        <div className="flex flex-wrap gap-x-8 gap-y-4 text-sm text-muted-foreground border-l-2 border-primary/20 pl-4">
+                        <div className="flex flex-wrap items-center gap-x-8 gap-y-6 text-sm text-muted-foreground border-l-2 border-primary/20 pl-6">
+                            <div className="flex items-center gap-3 pr-4">
+                                <div className="relative w-10 h-10 rounded-full overflow-hidden border border-white/10 shrink-0 shadow-sm">
+                                    <Image src="/JOSEPH.JPG" alt="Joseph Awer" fill className="object-cover" />
+                                </div>
+                                <div>
+                                    <span className="block font-medium text-foreground text-xs uppercase tracking-wide opacity-70">Lead Engineer</span>
+                                    <span className="font-semibold text-foreground">Joseph Awer</span>
+                                </div>
+                            </div>
                             <div>
                                 <span className="block font-medium text-foreground">Role</span>
                                 {project.role}
