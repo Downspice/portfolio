@@ -13,7 +13,7 @@ export const experiences: ExperienceItem[] = [
         id: "ceptra-nexgen",
         title: "Software Engineer",
         company: "Ceptra Nexgen Technologies",
-        period: "July 2025 – October 2025",
+        period: "July 2025 – December 2025",
         location: "Remote · Accra, Ghana",
         type: "Contract",
         focus: [
