@@ -11,7 +11,7 @@ export default function Home() {
     <main className="min-h-screen bg-background overflow-x-hidden selection:bg-primary/20">
       <Hero />
       <EngineeringFocus />
-      <FeaturedProjects />
+      {/* <FeaturedProjects /> */}
       <TechnicalDomains />
       <WorkExperience />
       <Mindset />

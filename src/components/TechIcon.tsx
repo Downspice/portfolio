@@ -22,6 +22,7 @@ import {
     SiGithub,
     SiLinkedin,
 } from "react-icons/si";
+import { FileText } from "lucide-react";
 import { IconType } from "react-icons";
 
 export const iconMap: Record<string, IconType> = {
@@ -47,6 +48,7 @@ export const iconMap: Record<string, IconType> = {
     "NativeWind": SiTailwindcss,
     "GitHub": SiGithub,
     "LinkedIn": SiLinkedin,
+    "Resume": FileText as IconType,
 };
 
 export function TechIcon({ name, className }: { name: string; className?: string }) {

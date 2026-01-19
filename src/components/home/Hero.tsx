@@ -42,9 +42,12 @@ export function Hero() {
                         <Button size="lg" className="h-12 px-8 text-base shadow-lg hover:shadow-primary/20 transition-all duration-300">
                             View Projects
                         </Button>
-                        <Button size="lg" variant="outline" className="h-12 px-8 text-base bg-white/50 backdrop-blur-sm border-white/20 hover:bg-white/80 dark:bg-black/20 dark:hover:bg-black/40">
-                            Get in Touch
-                        </Button>
+                        <a href="https://docs.google.com/document/d/1Kgei3zUYT3TPkn7CJem7U83X3vwnlyKEV_Y4eM_2anE/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+                            <Button size="lg" variant="outline" className="h-12 px-8 text-base bg-white/50 backdrop-blur-sm border-white/20 hover:bg-white/80 dark:bg-black/20 dark:hover:bg-black/40 gap-2">
+                                <TechIcon name="Resume" className="w-4 h-4" />
+                                Resume
+                            </Button>
+                        </a>
                     </div>
 
                     <div className="flex items-center gap-6 mt-4 text-muted-foreground">

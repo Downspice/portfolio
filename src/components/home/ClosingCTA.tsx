@@ -25,9 +25,11 @@ export function ClosingCTA() {
                             <Button size="lg" className="h-12 px-8 text-base w-full sm:w-auto">
                                 Get in Touch
                             </Button>
-                            <Button size="lg" variant="outline" className="h-12 px-8 text-base w-full sm:w-auto">
-                                View Resume
-                            </Button>
+                            <a href="https://docs.google.com/document/d/1Kgei3zUYT3TPkn7CJem7U83X3vwnlyKEV_Y4eM_2anE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                                <Button size="lg" variant="outline" className="h-12 px-8 text-base w-full">
+                                    View Resume
+                                </Button>
+                            </a>
                         </div>
                     </div>
                 </motion.div>
