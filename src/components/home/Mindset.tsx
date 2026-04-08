@@ -6,21 +6,24 @@ import { CheckCircle2, Cpu, Users, Zap } from "lucide-react";
 
 export function Mindset() {
     return (
-        <section className="py-24 px-4 bg-linear-to-b from-background to-secondary/20">
-            <div className="container max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <section className="pt-24 pb-8 px-4 bg-linear-to-b from-background to-secondary/20">
+            <div className="w-full flex flex-col gap-3">
                 {/* How I Work - Large Panel */}
-                <div className="lg:col-span-2 space-y-8">
+                <div className="w-full">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
                     >
-                        <h2 className="text-3xl font-semibold mb-6">How I Work</h2>
-                        <div className="glass-panel p-8 rounded-2xl border-none shadow-sm space-y-8 relative overflow-hidden">
-                            <div className="absolute top-0 right-0 p-12 bg-primary/5 blur-3xl rounded-full -z-10" />
+                        <div className="container max-w-6xl mx-auto px-4 mb-6 text-center">
+                            <h2 className="text-3xl font-semibold">How I Work</h2>
+                        </div>
+                        <div className="glass-panel w-full px-4 py-12 md:py-16 rounded-none border-x-0 shadow-sm relative overflow-hidden">
+                            <div className="absolute top-0 right-0 p-32 bg-primary/5 blur-[100px] rounded-full -z-10" />
+                            <div className="absolute bottom-0 left-0 p-32 bg-secondary/5 blur-[100px] rounded-full -z-10" />
 
-                            <div className="grid sm:grid-cols-2 gap-8">
+                            <div className="container max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                                 <div className="space-y-3">
                                     <div className="flex items-center gap-3 text-primary font-medium">
                                         <Cpu className="w-5 h-5" />
@@ -65,40 +68,31 @@ export function Mindset() {
                     </motion.div>
                 </div>
 
-                {/* Currently - Sidebar Card */}
-                <div className="lg:col-span-1">
+                {/* Currently - Full Width Section */}
+                <div className="w-full">
                     <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="h-full"
                     >
-                        <Card className="h-full glass-panel border-none shadow-sm flex flex-col justify-between">
-                            <CardHeader>
-                                <div className="flex items-center gap-2 mb-2">
+                        <div className="w-full glass-panel border-x-0 rounded-none shadow-sm py-12 px-4 flex flex-col items-center justify-center text-center relative overflow-hidden">
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-32 bg-emerald-500/5 blur-[100px] rounded-full -z-10" />
+                            
+                            <div className="container max-w-3xl mx-auto">
+                                <div className="flex justify-center items-center gap-2 mb-4">
                                     <span className="relative flex h-3 w-3">
                                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                                         <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                                     </span>
-                                    <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Currently</span>
+                                    <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Currently Building</span>
                                 </div>
-                                <CardTitle className="text-xl">Exploring WebAssembly</CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-4">
-                                <p className="text-muted-foreground leading-relaxed">
-                                    I'm diving deep into Rust and WASM to push the boundaries of browser performance for image processing tasks.
+                                <h3 className="text-2xl font-semibold mb-4 text-foreground">Trip Booking System</h3>
+                                <p className="text-muted-foreground text-lg leading-relaxed">
+                                    I am currently developing a comprehensive trip booking system for SHS students utilizing <span className="font-medium text-primary">Next.js, Shadcn UI, NestJS, Prisma, PostgreSQL</span>, and <span className="font-medium text-emerald-500">Paystack</span>.
                                 </p>
-                                <hr className="border-border/50" />
-                                <div className="space-y-2">
-                                    <p className="text-sm font-medium text-foreground">Recently Shipped:</p>
-                                    <ul className="text-sm text-muted-foreground space-y-1">
-                                        <li>• Portfolio Refactor (Next.js 15)</li>
-                                        <li>• React Native Widget Lib</li>
-                                    </ul>
-                                </div>
-                            </CardContent>
-                        </Card>
+                            </div>
+                        </div>
                     </motion.div>
                 </div>
             </div>

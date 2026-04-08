@@ -101,6 +101,38 @@ export function Hero() {
                     >
                         <TechIcon name="Next.js" className="w-6 h-6 md:w-8 md:h-8 text-foreground" />
                     </motion.div>
+
+                    <motion.div 
+                        animate={{ y: [0, -20, 0], rotate: [0, -10, 0] }}
+                        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                        className="absolute -top-2 -right-6 md:-top-4 md:-right-12 z-20 bg-background/80 backdrop-blur-md p-2 md:p-3 rounded-2xl border border-white/10 shadow-xl"
+                    >
+                        <TechIcon name="Figma" className="w-5 h-5 md:w-7 md:h-7 text-[#F24E1E]" />
+                    </motion.div>
+
+                    <motion.div 
+                        animate={{ y: [0, 15, 0], rotate: [0, 15, 0] }}
+                        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                        className="absolute bottom-4 -left-6 md:bottom-8 md:-left-12 z-20 bg-background/80 backdrop-blur-md p-2 md:p-3 rounded-2xl border border-white/10 shadow-xl"
+                    >
+                        <TechIcon name="PostgreSQL" className="w-5 h-5 md:w-7 md:h-7 text-[#4169E1]" />
+                    </motion.div>
+
+                    <motion.div 
+                        animate={{ x: [0, -10, 0], y: [0, -10, 0], rotate: [0, 5, 0] }}
+                        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                        className="absolute top-1/2 -left-8 md:top-1/3 md:-left-16 z-20 bg-background/80 backdrop-blur-md p-2 rounded-2xl border border-white/10 shadow-xl"
+                    >
+                        <TechIcon name="TypeScript" className="w-4 h-4 md:w-6 md:h-6 text-[#3178C6]" />
+                    </motion.div>
+
+                    <motion.div 
+                        animate={{ x: [0, 10, 0], y: [0, -5, 0], rotate: [0, -8, 0] }}
+                        transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
+                        className="absolute top-2/3 -right-6 md:top-2/3 md:-right-14 z-20 bg-background/80 backdrop-blur-md p-2 rounded-2xl border border-white/10 shadow-xl"
+                    >
+                        <TechIcon name="Prisma" className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
+                    </motion.div>
                 </motion.div>
 
             </div>

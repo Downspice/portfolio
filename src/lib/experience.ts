@@ -44,7 +44,7 @@ export const experiences: ExperienceItem[] = [
         period: "November 2023 – March 2025",
         location: "Dzorwulu, Accra, Ghana",
         focus: [
-            "Modernized legacy systems by migrating Thymeleaf applications to React, Next.js, and Angular.",
+            "Modernized legacy systems by migrating Thymeleaf applications to React, HTML, CSS and Tailwind.",
             "Designed and delivered an internal VOIP task management system to streamline operations.",
             "Led UX initiatives, conducting A/B testing and advocating for user-centered design principles.",
             "Authored formal documentation including SRS, DDS, SDS, and Acceptance Test Plans (ATP).",

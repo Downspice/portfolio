@@ -13,12 +13,12 @@ const areas = [
     {
         icon: Layout,
         title: "Modern Frontend",
-        description: "Crafting responsive, accessible web interfaces using React, Next.js, and Angular.",
+        description: "Crafting responsive, accessible web interfaces using React, HTML, CSS and Tailwind.",
     },
     {
         icon: Server,
         title: "Backend Systems",
-        description: "Designing scalable APIs and data models with Java, Python, and Django.",
+        description: "Designing scalable APIs and data models with Java and NestJS.",
     },
     {
         icon: Zap,
