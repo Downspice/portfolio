@@ -35,7 +35,7 @@ export function Hero() {
                     </h1>
                     <p className="text-xl text-muted-foreground max-w-lg text-balance leading-relaxed pt-2">
                         Mobile & Full-Stack Systems Specialist.<br />
-                        Building performant applications with <span className="text-foreground font-medium">Expo</span>, <span className="text-foreground font-medium">Next.js</span>, and <span className="text-foreground font-medium">Python</span>.
+                        Building performant applications with <span className="text-foreground font-medium">Expo</span>, <span className="text-foreground font-medium">React</span>, and <span className="text-foreground font-medium">Javascript</span>.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-4">

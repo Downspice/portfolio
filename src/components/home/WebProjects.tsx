@@ -40,6 +40,17 @@ const projects = [
         colors: {
             accent: "#0d9488", // Teal
         }
+    },
+    {
+        title: "Trip (Personal Version)",
+        subtitle: "Travel Management System",
+        description: "A fully customizable travel management system for SHS students to book trips and for parents to book visits to their wards securely.",
+        stack: ["Next.js", "Nestjs", "React", "PostgreSQL", "Prisma"],
+        image: "/trip-management.png",
+        link: "https://trip-web-indol-nu.vercel.app/",
+        colors: {
+            accent: "#8b5cf6", // Violet
+        }
     }
 ];
 
