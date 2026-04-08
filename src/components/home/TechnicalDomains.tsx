@@ -43,7 +43,6 @@ const domains = [
         tools: [
             { name: "React", icon: SiReact },
             { name: "Next.js", icon: SiNextdotjs },
-            { name: "Angular", icon: SiAngular },
             { name: "TypeScript", icon: SiTypescript },
             { name: "Tailwind CSS", icon: SiTailwindcss },
             { name: "Framer Motion", icon: SiFramer },
