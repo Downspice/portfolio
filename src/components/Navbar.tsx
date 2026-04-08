@@ -12,6 +12,7 @@ const navLinks = [
     { name: "Projects", href: "/projects" },
     { name: "Experience", href: "/experience" },
     { name: "Stack", href: "/stack" },
+    { name: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {
@@ -45,9 +46,9 @@ export function Navbar() {
                 <div className="flex items-center justify-between transition-all duration-500">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-3 group">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white font-bold text-xl group-hover:rotate-12 transition-all duration-300 shadow-lg shadow-primary/20 group-hover:shadow-primary/40">
+                        {/* <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white font-bold text-xl group-hover:rotate-12 transition-all duration-300 shadow-lg shadow-primary/20 group-hover:shadow-primary/40">
                             J
-                        </div>
+                        </div> */}
                         <span className="font-bold text-xl tracking-tight hidden sm:block bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground">Joseph Awer</span>
                     </Link>
 
