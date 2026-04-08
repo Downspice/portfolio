@@ -6,6 +6,7 @@ import { Mindset } from "@/components/home/Mindset";
 import { ClosingCTA } from "@/components/home/ClosingCTA";
 import { WorkExperience } from "@/components/home/WorkExperience";
 import { UIMockups } from "@/components/home/UIMockups";
+import { WebProjects } from "@/components/home/WebProjects";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <TechnicalDomains />
       <WorkExperience />
       <UIMockups />
+      <WebProjects />
       <Mindset />
       <ClosingCTA />
     </main>
