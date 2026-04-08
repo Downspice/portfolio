@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue } from "framer-motion";
 import { ExternalLink, X, Maximize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TechIcon } from "@/components/TechIcon";
+import { BackgroundOrbs } from "@/components/BackgroundOrbs";
 import Image from "next/image";
 
 const mockups = [
@@ -60,8 +61,28 @@ export function UIMockups() {
     const [selectedMockup, setSelectedMockup] = useState<typeof mockups[0] | null>(null);
 
     return (
-        <section className="py-24 px-4 bg-muted/30">
-            <div className="container max-w-6xl mx-auto">
+        <section className="relative py-24 px-4 bg-muted/30 overflow-hidden">
+            <BackgroundOrbs />
+            
+            {/* Floating decorative icons */}
+            <div className="absolute inset-0 pointer-events-none opacity-20">
+                <motion.div 
+                    animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute top-20 left-[10%] text-primary"
+                >
+                    <TechIcon name="Figma" className="w-12 h-12" />
+                </motion.div>
+                <motion.div 
+                    animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
+                    transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    className="absolute bottom-40 right-[15%] text-primary"
+                >
+                    <TechIcon name="Figma" className="w-16 h-16" />
+                </motion.div>
+            </div>
+
+            <div className="container max-w-6xl mx-auto relative z-10">
                 <div className="mb-16 text-center md:text-left">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -77,77 +98,81 @@ export function UIMockups() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {mockups.map((mockup, index) => (
-                        <motion.div
-                            key={mockup.title}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="group relative flex flex-col h-full bg-background rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-border/50"
-                        >
-                            {/* Project Image Container */}
-                            <div 
-                                className="relative aspect-[4/3] overflow-hidden cursor-zoom-in group-hover:scale-[1.02] transition-transform duration-700"
-                                onClick={() => setSelectedMockup(mockup)}
+                        <CardTilt key={mockup.title}>
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                className="group relative flex flex-col h-full bg-background rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-border/50"
                             >
-                                <Image
-                                    src={mockup.image}
-                                    alt={mockup.title}
-                                    fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                                    <div className="bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded-full text-white scale-90 group-hover:scale-100 transition-transform duration-300">
-                                        <Maximize2 className="w-6 h-6" />
+                                {/* Project Image Container */}
+                                <div 
+                                    className="relative aspect-[4/3] overflow-hidden cursor-zoom-in group-hover:scale-[1.02] transition-transform duration-700"
+                                    onClick={() => setSelectedMockup(mockup)}
+                                >
+                                    <Image
+                                        src={mockup.image}
+                                        alt={mockup.title}
+                                        fill
+                                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                    />
+                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                                        <div className="bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded-full text-white scale-90 group-hover:scale-100 transition-transform duration-300">
+                                            <Maximize2 className="w-6 h-6" />
+                                        </div>
+                                    </div>
+                                    <div 
+                                        className="absolute bottom-4 left-4 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border border-white/20 text-white"
+                                        style={{ backgroundColor: `${mockup.colors.primary}88` }}
+                                    >
+                                        {mockup.subtitle}
                                     </div>
                                 </div>
-                                <div 
-                                    className="absolute bottom-4 left-4 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border border-white/20 text-white"
-                                    style={{ backgroundColor: `${mockup.colors.primary}88` }}
-                                >
-                                    {mockup.subtitle}
-                                </div>
-                            </div>
 
-                            {/* Project Details */}
-                            <div className="p-8 flex flex-col flex-1">
-                                <div className="mb-4">
-                                    <h4 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{mockup.title}</h4>
-                                    <div className="flex items-center gap-2">
-                                        {mockup.stack.map(s => (
-                                            <div key={s} className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
-                                                <TechIcon name={s} className="w-3.5 h-3.5" />
-                                                <span>{s}</span>
-                                            </div>
+                                {/* Project Details */}
+                                <div className="p-8 flex flex-col flex-1">
+                                    <div className="mb-4">
+                                        <h4 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{mockup.title}</h4>
+                                        <div className="flex items-center gap-2">
+                                            {mockup.stack.map(s => (
+                                                <div key={s} className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
+                                                    <TechIcon name={s} className="w-3.5 h-3.5" />
+                                                    <span>{s}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <p className="text-muted-foreground text-sm leading-relaxed mb-8 flex-1">
+                                        {mockup.description}
+                                    </p>
+                                    
+                                    <div className="flex flex-wrap gap-3 mt-auto">
+                                        {mockup.links.map(link => (
+                                            <Button 
+                                                key={link.url}
+                                                variant="outline" 
+                                                size="sm"
+                                                className="rounded-xl border-border/50 hover:bg-muted group/btn gap-2"
+                                                onClick={() => window.open(link.url, '_blank')}
+                                            >
+                                                {link.label}
+                                                <ExternalLink className="w-3.5 h-3.5 opacity-50 group-hover/btn:opacity-100 transition-opacity" />
+                                            </Button>
                                         ))}
                                     </div>
                                 </div>
-                                <p className="text-muted-foreground text-sm leading-relaxed mb-8 flex-1">
-                                    {mockup.description}
-                                </p>
-                                
-                                <div className="flex flex-wrap gap-3 mt-auto">
-                                    {mockup.links.map(link => (
-                                        <Button 
-                                            key={link.url}
-                                            variant="outline" 
-                                            size="sm"
-                                            className="rounded-xl border-border/50 hover:bg-muted group/btn gap-2"
-                                            onClick={() => window.open(link.url, '_blank')}
-                                        >
-                                            {link.label}
-                                            <ExternalLink className="w-3.5 h-3.5 opacity-50 group-hover/btn:opacity-100 transition-opacity" />
-                                        </Button>
-                                    ))}
-                                </div>
-                            </div>
 
-                            {/* Decorative accent */}
-                            <div 
-                                className="absolute top-0 right-0 w-24 h-24 blur-3xl opacity-10 pointer-events-none group-hover:opacity-30 transition-opacity duration-700"
-                                style={{ backgroundColor: mockup.colors.primary }}
-                            />
-                        </motion.div>
+                                {/* Floating accent background */}
+                                <div 
+                                    className="absolute top-0 right-0 w-32 h-32 blur-3xl opacity-0 group-hover:opacity-20 pointer-events-none transition-opacity duration-700"
+                                    style={{ backgroundColor: mockup.colors.primary }}
+                                />
+                                
+                                {/* Border glow effect */}
+                                <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/10 rounded-3xl pointer-events-none transition-colors duration-500" />
+                            </motion.div>
+                        </CardTilt>
                     ))}
                 </div>
             </div>
@@ -244,5 +269,44 @@ export function UIMockups() {
                 )}
             </AnimatePresence>
         </section>
+    );
+}
+
+function CardTilt({ children }: { children: React.ReactNode }) {
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        const xPct = mouseX / width - 0.5;
+        const yPct = mouseY / height - 0.5;
+
+        x.set(xPct);
+        y.set(yPct);
+    };
+
+    const handleMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+    };
+
+    return (
+        <motion.div
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+                transformStyle: "preserve-3d",
+            }}
+            className="flex flex-col h-full"
+        >
+            <div style={{ transform: "translateZ(50px)", transformStyle: "preserve-3d" }} className="flex flex-col h-full">
+                {children}
+            </div>
+        </motion.div>
     );
 }

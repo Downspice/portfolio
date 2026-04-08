@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Globe, LayoutDashboard, X, Maximize2 } from "lucide-react";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { ExternalLink, Globe, LayoutDashboard, X, Maximize2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TechIcon } from "@/components/TechIcon";
+import { BackgroundOrbs } from "@/components/BackgroundOrbs";
 import Image from "next/image";
 
 const projects = [
@@ -58,8 +59,38 @@ export function WebProjects() {
     const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
     return (
-        <section className="py-24 px-4 bg-background">
-            <div className="container max-w-6xl mx-auto">
+        <section className="relative py-24 px-4 bg-background overflow-hidden">
+            <BackgroundOrbs />
+            
+            {/* Floating Particles/Shapes */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                {[...Array(5)].map((_, i) => (
+                    <motion.div
+                        key={i}
+                        animate={{
+                            y: [0, Math.random() * -100, 0],
+                            x: [0, (Math.random() - 0.5) * 50, 0],
+                            rotate: [0, 360],
+                            opacity: [0.1, 0.3, 0.1]
+                        }}
+                        transition={{
+                            duration: 10 + Math.random() * 10,
+                            repeat: Infinity,
+                            ease: "linear",
+                            delay: i * 2
+                        }}
+                        className="absolute text-primary"
+                        style={{
+                            top: `${Math.random() * 100}%`,
+                            left: `${Math.random() * 100}%`,
+                        }}
+                    >
+                        <Sparkles className="w-8 h-8 md:w-12 md:h-12" />
+                    </motion.div>
+                ))}
+            </div>
+
+            <div className="container max-w-6xl mx-auto relative z-10">
                 <div className="mb-16">
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -78,76 +109,80 @@ export function WebProjects() {
                     </motion.div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
                     {projects.map((project, index) => (
-                        <motion.div
-                            key={project.title}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.7, delay: index * 0.1 }}
-                            className="group flex flex-col h-full bg-secondary/20 rounded-[2rem] border border-border/50 overflow-hidden hover:border-primary/20 transition-all duration-500 cursor-pointer"
-                            onClick={() => setSelectedProject(project)}
-                        >
-                            {/* Project Visual */}
-                            <div className="relative aspect-[16/10] overflow-hidden">
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-1000"
-                                />
-                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                                    <div className="bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded-full text-white scale-90 group-hover:scale-100 transition-transform duration-300">
-                                        <Maximize2 className="w-6 h-6" />
-                                    </div>
-                                </div>
-                                
-                                {/* Tech Icons Overlay */}
-                                <div className="absolute top-4 right-4 flex gap-2">
-                                    {project.stack.map(s => (
-                                        <div key={s} className="p-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-sm">
-                                            <TechIcon name={s} className="w-4 h-4" />
+                        <CardTilt key={project.title}>
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.7, delay: index * 0.1 }}
+                                className="group h-full relative flex flex-col bg-secondary/20 rounded-[2rem] border border-border/50 overflow-hidden hover:border-primary/20 transition-all duration-500 cursor-pointer backdrop-blur-sm"
+                                onClick={() => setSelectedProject(project)}
+                            >
+                                {/* Project Visual */}
+                                <div className="relative aspect-[16/10] overflow-hidden">
+                                    <Image
+                                        src={project.image}
+                                        alt={project.title}
+                                        fill
+                                        className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                                    />
+                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                                        <div className="bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded-full text-white scale-90 group-hover:scale-100 transition-transform duration-300">
+                                            <Maximize2 className="w-6 h-6" />
                                         </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Project Content */}
-                            <div className="p-8 flex flex-col flex-1">
-                                <div className="mb-4">
-                                    <h4 className="text-2xl font-bold group-hover:text-primary transition-colors">{project.title}</h4>
-                                    <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">{project.subtitle}</span>
-                                </div>
-                                
-                                <p className="text-muted-foreground text-sm leading-relaxed mb-8 flex-1">
-                                    {project.description}
-                                </p>
-
-                                <div className="flex flex-col gap-3 mt-auto">
-                                    <Button 
-                                        asChild
-                                        className="w-full rounded-2xl gap-2 font-semibold shadow-md hover:shadow-lg transition-all duration-300"
-                                        style={{ backgroundColor: project.colors.accent }}
-                                        onClick={(e) => e.stopPropagation()}
-                                    >
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                            Visit Live Site <Globe className="w-4 h-4" />
-                                        </a>
-                                    </Button>
-                                    <div className="flex items-center gap-2 justify-center text-[10px] font-bold uppercase tracking-widest text-muted-foreground/50">
-                                        <LayoutDashboard className="w-3 h-3" />
-                                        <span>PostgreSQL + Next.js</span>
+                                    </div>
+                                    
+                                    {/* Tech Icons Overlay */}
+                                    <div className="absolute top-4 right-4 flex gap-2">
+                                        {project.stack.map(s => (
+                                            <div key={s} className="p-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-sm">
+                                                <TechIcon name={s} className="w-4 h-4" />
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Hover accent light */}
-                            <div 
-                                className="absolute -bottom-12 -right-12 w-32 h-32 blur-[100px] opacity-0 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none"
-                                style={{ backgroundColor: project.colors.accent }}
-                            />
-                        </motion.div>
+                                {/* Project Content */}
+                                <div className="p-8 flex flex-col flex-1">
+                                    <div className="mb-4">
+                                        <h4 className="text-2xl font-bold group-hover:text-primary transition-colors">{project.title}</h4>
+                                        <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">{project.subtitle}</span>
+                                    </div>
+                                    
+                                    <p className="text-muted-foreground text-sm leading-relaxed mb-8 flex-1">
+                                        {project.description}
+                                    </p>
+
+                                    <div className="flex flex-col gap-3 mt-auto">
+                                        <Button 
+                                            asChild
+                                            className="w-full rounded-2xl gap-2 font-semibold shadow-md hover:shadow-lg transition-all duration-300"
+                                            style={{ backgroundColor: project.colors.accent }}
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
+                                            <a href={project.link} target="_blank" rel="noopener noreferrer">
+                                                Visit Live Site <Globe className="w-4 h-4" />
+                                            </a>
+                                        </Button>
+                                        <div className="flex items-center gap-2 justify-center text-[10px] font-bold uppercase tracking-widest text-muted-foreground/50">
+                                            <LayoutDashboard className="w-3 h-3" />
+                                            <span>PostgreSQL + Next.js</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Hover accent light */}
+                                <div 
+                                    className="absolute -bottom-12 -right-12 w-32 h-32 blur-[100px] opacity-0 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none"
+                                    style={{ backgroundColor: project.colors.accent }}
+                                />
+
+                                {/* Glow ring */}
+                                <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/5 rounded-[2rem] pointer-events-none transition-colors duration-500" />
+                            </motion.div>
+                        </CardTilt>
                     ))}
                 </div>
             </div>
@@ -238,5 +273,52 @@ export function WebProjects() {
                 )}
             </AnimatePresence>
         </section>
+    );
+}
+
+function CardTilt({ children }: { children: React.ReactNode }) {
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const mouseXSpring = useSpring(x);
+    const mouseYSpring = useSpring(y);
+
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        const xPct = mouseX / width - 0.5;
+        const yPct = mouseY / height - 0.5;
+
+        x.set(xPct);
+        y.set(yPct);
+    };
+
+    const handleMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+    };
+
+    return (
+        <motion.div
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+                rotateY,
+                rotateX,
+                transformStyle: "preserve-3d",
+            }}
+            className="flex flex-col h-full"
+        >
+            <div style={{ transform: "translateZ(30px)", transformStyle: "preserve-3d" }} className="flex flex-col h-full">
+                {children}
+            </div>
+        </motion.div>
     );
 }
