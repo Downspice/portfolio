@@ -39,8 +39,10 @@ export function Hero() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-4">
-                        <Button size="lg" className="h-12 px-8 text-base shadow-lg hover:shadow-primary/20 transition-all duration-300">
-                            View Projects
+                        <Button size="lg" className="relative group h-12 px-8 text-base shadow-lg transition-all duration-300 overflow-hidden">
+                            <span className="relative z-10">View Projects</span>
+                            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
+                            <div className="absolute inset-0 -z-10 shadow-[0_0_30px_-5px_rgba(var(--primary),0.5)] group-hover:shadow-[0_0_40px_0px_rgba(var(--primary),0.7)] transition-shadow duration-500" />
                         </Button>
                         <a href="https://docs.google.com/document/d/1Kgei3zUYT3TPkn7CJem7U83X3vwnlyKEV_Y4eM_2anE/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
                             <Button size="lg" variant="outline" className="h-12 px-8 text-base bg-white/50 backdrop-blur-sm border-white/20 hover:bg-white/80 dark:bg-black/20 dark:hover:bg-black/40 gap-2">
@@ -70,7 +72,7 @@ export function Hero() {
                     transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                     className="relative shrink-0"
                 >
-                    <div className="relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl glass-panel">
+                    <div className="relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl glass-panel relative z-10">
                         <Image
                             src="/JOSEPH.JPG"
                             alt="Joseph Awer"
@@ -80,7 +82,25 @@ export function Hero() {
                         />
                     </div>
                     {/* Decorative ring */}
-                    <div className="absolute inset-0 -m-4 rounded-full border border-primary/10 border-dashed animate-spin-slow pointer-events-none" style={{ animationDuration: '20s' }} />
+                    <div className="absolute inset-0 -m-6 rounded-full border-2 border-primary/30 border-dashed animate-spin-slow pointer-events-none shadow-[0_0_30px_-5px_var(--primary)] backdrop-blur-[1px]" style={{ animationDuration: '25s' }} />
+                    <div className="absolute inset-0 -m-10 rounded-full border border-accent/20 border-dotted animate-spin-slow pointer-events-none" style={{ animationDuration: '35s', animationDirection: 'reverse' }} />
+
+                    {/* Drifting Icons */}
+                    <motion.div 
+                        animate={{ y: [0, -15, 0], rotate: [0, 10, 0] }}
+                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -top-4 -left-4 md:-top-6 md:-left-6 z-20 bg-background/80 backdrop-blur-md p-3 md:p-4 rounded-2xl border border-white/10 shadow-xl"
+                    >
+                        <TechIcon name="React" className="w-6 h-6 md:w-8 md:h-8 text-[#61DAFB]" />
+                    </motion.div>
+                    
+                    <motion.div 
+                        animate={{ y: [0, 20, 0], rotate: [0, -15, 0] }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                        className="absolute bottom-6 -right-4 md:bottom-10 md:-right-8 z-20 bg-background/80 backdrop-blur-md p-3 md:p-4 rounded-2xl border border-white/10 shadow-xl"
+                    >
+                        <TechIcon name="Next.js" className="w-6 h-6 md:w-8 md:h-8 text-foreground" />
+                    </motion.div>
                 </motion.div>
 
             </div>

@@ -48,11 +48,11 @@ export function Navbar() {
                         : "bg-transparent border border-transparent"
                 )}>
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2 group">
-                        <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white font-bold text-xl group-hover:rotate-12 transition-transform shadow-lg shadow-primary/20">
+                    <Link href="/" className="flex items-center gap-3 group">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white font-bold text-xl group-hover:rotate-12 transition-all duration-300 shadow-lg shadow-primary/20 group-hover:shadow-primary/40">
                             J
                         </div>
-                        <span className="font-bold text-xl tracking-tight hidden sm:block">Joseph Awer</span>
+                        <span className="font-bold text-xl tracking-tight hidden sm:block bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground">Joseph Awer</span>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -62,19 +62,20 @@ export function Navbar() {
                                 key={link.href} 
                                 href={link.href}
                                 className={cn(
-                                    "px-4 py-2 rounded-xl text-sm font-medium transition-all relative group",
+                                    "px-4 py-2 text-sm font-medium transition-all relative group z-10",
                                     pathname === link.href 
-                                        ? "text-primary bg-primary/5" 
-                                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                                        ? "text-primary" 
+                                        : "text-muted-foreground hover:text-foreground"
                                 )}
                             >
-                                {link.name}
                                 {pathname === link.href && (
                                     <motion.div 
                                         layoutId="nav-active"
-                                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
+                                        className="absolute inset-0 bg-primary/10 rounded-xl -z-10"
+                                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                     />
                                 )}
+                                <span className="relative z-20">{link.name}</span>
                             </Link>
                         ))}
                     </div>
