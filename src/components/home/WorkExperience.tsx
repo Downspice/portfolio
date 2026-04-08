@@ -1,10 +1,15 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { experiences } from "@/lib/experience";
-import { Briefcase, Calendar, MapPin } from "lucide-react";
+import { Briefcase, Calendar, MapPin, ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function WorkExperience() {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const activeRole = experiences[activeIndex];
+
     return (
         <section className="py-24 px-4 md:px-6 relative overflow-hidden">
             {/* Background Ambience */}
@@ -12,7 +17,7 @@ export function WorkExperience() {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl opacity-30" />
             </div>
 
-            <div className="container max-w-4xl mx-auto space-y-16">
+            <div className="container max-w-5xl mx-auto space-y-16">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -21,69 +26,128 @@ export function WorkExperience() {
                     className="text-center space-y-4"
                 >
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
-                        Professional Experience
+                        Professional <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Experience</span>
                     </h2>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                         A timeline of technical leadership, system architecture, and delivering impact across diverse environments.
                     </p>
                 </motion.div>
 
-                <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-primary/20 before:to-transparent">
-                    {experiences.map((role, index) => (
-                        <motion.div
-                            key={role.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
-                        >
-                            {/* Timeline Dot */}
-                            <div className="absolute left-0 md:left-1/2 w-10 h-10 rounded-full border border-border bg-background flex items-center justify-center shrink-0 z-10 md:-translate-x-1/2 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                <Briefcase className="w-4 h-4 text-primary" />
-                            </div>
+                <div className="flex flex-col md:flex-row gap-8 lg:gap-12 min-h-[500px]">
+                    {/* Left Sidebar Menu */}
+                    <div className="w-full md:w-1/3 flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory">
+                        {/* Custom scroll hides on webkit, or we could add a hide-scrollbar class */}
+                        <style jsx global>{`
+                            .no-scrollbar::-webkit-scrollbar {
+                                display: none;
+                            }
+                            .no-scrollbar {
+                                -ms-overflow-style: none;  /* IE and Edge */
+                                scrollbar-width: none;  /* Firefox */
+                            }
+                        `}</style>
+                        <div className="flex flex-row md:flex-col gap-3 w-max md:w-full no-scrollbar px-2 md:px-0">
+                            {experiences.map((role, index) => {
+                                const isActive = index === activeIndex;
+                                return (
+                                    <button
+                                        key={role.id}
+                                        onClick={() => setActiveIndex(index)}
+                                        className={cn(
+                                            "relative flex items-center justify-between text-left p-4 md:p-5 rounded-2xl transition-all duration-300 min-w-[220px] md:min-w-0 snap-center shrink-0 border border-transparent z-10",
+                                            isActive 
+                                                ? "text-primary shadow-sm" 
+                                                : "hover:bg-muted/50 text-muted-foreground hover:text-foreground hover:border-border/50"
+                                        )}
+                                    >
+                                        <div className="flex flex-col gap-1 z-10">
+                                            <span className={cn("font-bold text-sm md:text-base transition-colors", isActive ? "text-primary" : "")}>{role.company}</span>
+                                            <span className="text-xs font-medium opacity-80">{role.period.split(" ")[0]} {role.period.split(" ")[2] || role.period.split(" ")[1]}</span>
+                                        </div>
+                                        <ChevronRight className={cn("w-4 h-4 transition-transform duration-300 hidden md:block z-10", isActive ? "translate-x-1" : "opacity-0 -translate-x-2")} />
+                                        
+                                        {isActive && (
+                                            <motion.div 
+                                                layoutId="active-experience-bg"
+                                                className="absolute inset-0 bg-primary/5 rounded-2xl border border-primary/10 -z-10"
+                                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                            />
+                                        )}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
 
-                            {/* Card content */}
-                            <div className="w-[calc(100%-3.5rem)] md:w-[calc(50%-2.5rem)] ml-14 md:ml-0 p-6 md:p-8 rounded-2xl border border-white/10 glass-panel shadow-sm hover:shadow-md transition-all duration-300 group-hover:border-primary/20">
-                                <div className="space-y-4">
-                                    <div>
-                                        <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
-                                            <h3 className="text-xl font-bold text-foreground">
-                                                {role.title}
-                                            </h3>
-                                            {role.type && (
-                                                <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground border border-border/50">
-                                                    {role.type}
-                                                </span>
-                                            )}
-                                        </div>
-                                        <div className="text-primary font-medium text-lg leading-tight mb-2">
-                                            {role.company}
-                                        </div>
-                                        <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
-                                            <div className="flex items-center gap-1.5">
-                                                <Calendar className="w-3.5 h-3.5" />
-                                                {role.period}
+                    {/* Right Content Details */}
+                    <div className="w-full md:w-2/3 relative">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeRole.id}
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -20 }}
+                                transition={{ duration: 0.3 }}
+                                className="h-full"
+                            >
+                                <div className="p-8 md:p-10 rounded-[2.5rem] bg-secondary/10 border border-border/50 glass-panel shadow-xl flex flex-col h-full relative overflow-hidden group">
+                                    {/* Shimmering border glow effect via pseudo-element illusion */}
+                                    <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/10 rounded-[2.5rem] pointer-events-none transition-colors duration-500" />
+                                    
+                                    <div className="space-y-6 relative z-10">
+                                        <div>
+                                            <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-2">
+                                                <h3 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground">
+                                                    {activeRole.title}
+                                                </h3>
+                                                {activeRole.type && (
+                                                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 shrink-0 self-start">
+                                                        {activeRole.type}
+                                                    </span>
+                                                )}
                                             </div>
-                                            <div className="flex items-center gap-1.5">
-                                                <MapPin className="w-3.5 h-3.5" />
-                                                {role.location}
+                                            <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-muted-foreground mt-4 font-medium">
+                                                <div className="flex items-center gap-2">
+                                                    <Briefcase className="w-4 h-4 text-primary/70" />
+                                                    <span className="text-foreground/80">{activeRole.company}</span>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <Calendar className="w-4 h-4 text-primary/70" />
+                                                    {activeRole.period}
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <MapPin className="w-4 h-4 text-primary/70" />
+                                                    {activeRole.location}
+                                                </div>
                                             </div>
                                         </div>
+
+                                        <div className="w-full h-px bg-border/50" />
+
+                                        <ul className="space-y-4">
+                                            {activeRole.focus.map((item, i) => (
+                                                <motion.li 
+                                                    key={i}
+                                                    initial={{ opacity: 0, y: 10 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ delay: i * 0.1 }}
+                                                    className="text-muted-foreground leading-relaxed flex items-start gap-4"
+                                                >
+                                                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5 border border-primary/20">
+                                                        <ChevronRight className="w-3 h-3 text-primary" />
+                                                    </div>
+                                                    <span className="text-sm md:text-base">{item}</span>
+                                                </motion.li>
+                                            ))}
+                                        </ul>
                                     </div>
 
-                                    <ul className="space-y-2">
-                                        {role.focus.map((item, i) => (
-                                            <li key={i} className="text-sm text-muted-foreground/90 leading-relaxed flex items-start gap-2.5">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0 mt-1.5" />
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    {/* Decorator */}
+                                    <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/10 blur-[100px] pointer-events-none rounded-full" />
                                 </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
                 </div>
             </div>
         </section>

@@ -29,7 +29,7 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-            <TeaserCard title="UI Mockups" description="High-fidelity Figma designs for mobile and web systems." href="/mockups" />
+            <TeaserCard title="UI Mockups" description="High-fidelity Figma designs for mobile and web systems." href="/projects" />
             <TeaserCard title="Web Projects" description="Robust full-stack applications with PostgreSQL & Next.js." href="/projects" />
             <TeaserCard title="Experience" description="A deep dive into my professional engineering history." href="/experience" />
           </div>
