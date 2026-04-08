@@ -35,17 +35,14 @@ export function Navbar() {
     return (
         <header 
             className={cn(
-                "fixed top-0 left-0 right-0 z-[100] transition-all duration-300 px-4 md:px-8",
-                scrolled ? "py-4" : "py-6"
+                "fixed top-0 left-0 right-0 z-[100] transition-all duration-300",
+                scrolled 
+                    ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-sm py-3" 
+                    : "bg-transparent border-b border-transparent py-6"
             )}
         >
-            <nav className="max-w-7xl mx-auto">
-                <div className={cn(
-                    "flex items-center justify-between px-6 py-3 rounded-2xl transition-all duration-500",
-                    scrolled 
-                        ? "bg-background/80 backdrop-blur-xl border border-border/50 shadow-lg" 
-                        : "bg-transparent border border-transparent"
-                )}>
+            <nav className="max-w-7xl mx-auto px-4 md:px-8">
+                <div className="flex items-center justify-between transition-all duration-500">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-3 group">
                         <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white font-bold text-xl group-hover:rotate-12 transition-all duration-300 shadow-lg shadow-primary/20 group-hover:shadow-primary/40">
