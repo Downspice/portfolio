@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { TechIcon } from "@/components/TechIcon";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Hero() {
     return (
@@ -24,9 +25,11 @@ export function Hero() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="flex-1 flex flex-col items-center md:items-start text-center md:text-left space-y-6"
                 >
-                    <div className="inline-block px-3 py-1 rounded-full glass-panel text-sm font-medium text-muted-foreground mb-2">
-                        Available for new opportunities
-                    </div>
+                    <Link href="/contact" className="inline-block mb-2 group">
+                        <div className="px-3 py-1 rounded-full glass-panel text-sm font-medium text-muted-foreground group-hover:text-primary group-hover:border-primary/20 transition-all duration-300">
+                            Available for new opportunities
+                        </div>
+                    </Link>
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground text-balance">
                         Joseph Awer<br />
                         <span className="text-3xl md:text-5xl lg:text-5xl text-muted-foreground block mt-2">
@@ -39,12 +42,14 @@ export function Hero() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-4">
-                        <Button size="lg" className="relative group h-12 px-8 text-base shadow-lg transition-all duration-300 overflow-hidden">
-                            <span className="relative z-10">View Projects</span>
-                            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
-                            <div className="absolute inset-0 -z-10 shadow-[0_0_30px_-5px_rgba(var(--primary),0.5)] group-hover:shadow-[0_0_40px_0px_rgba(var(--primary),0.7)] transition-shadow duration-500" />
-                        </Button>
-                        <a href="https://docs.google.com/document/d/1Kgei3zUYT3TPkn7CJem7U83X3vwnlyKEV_Y4eM_2anE/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <Link href="/projects" className="w-full sm:w-auto">
+                            <Button size="lg" className="relative group h-12 px-8 text-base w-full shadow-lg transition-all duration-300 overflow-hidden">
+                                <span className="relative z-10">View Projects</span>
+                                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
+                                <div className="absolute inset-0 -z-10 shadow-[0_0_30px_-5px_rgba(var(--primary),0.5)] group-hover:shadow-[0_0_40px_0px_rgba(var(--primary),0.7)] transition-shadow duration-500" />
+                            </Button>
+                        </Link>
+                        <a href="https://docs.google.com/document/d/1Kgei3zUYT3TPkn7CJem7U83X3vwnlyKEV_Y4eM_2anE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                             <Button size="lg" variant="outline" className="h-12 px-8 text-base bg-white/50 backdrop-blur-sm border-white/20 hover:bg-white/80 dark:bg-black/20 dark:hover:bg-black/40 gap-2">
                                 <TechIcon name="Resume" className="w-4 h-4" />
                                 Resume

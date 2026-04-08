@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export function ClosingCTA() {
     return (
@@ -22,10 +23,12 @@ export function ClosingCTA() {
                         I'm always open to discussing new projects, opportunities, or just chatting about the latest in tech.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Button size="lg" className="h-12 px-8 text-base w-full sm:w-auto relative overflow-hidden group">
-                            <span className="relative z-10">Get in Touch</span>
-                            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
-                        </Button>
+                        <Link href="/contact" className="w-full sm:w-auto">
+                            <Button size="lg" className="h-12 px-8 text-base w-full relative overflow-hidden group">
+                                <span className="relative z-10">Get in Touch</span>
+                                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
+                            </Button>
+                        </Link>
                         <a href="https://docs.google.com/document/d/1Kgei3zUYT3TPkn7CJem7U83X3vwnlyKEV_Y4eM_2anE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                             <Button size="lg" variant="outline" className="h-12 px-8 text-base w-full group overflow-hidden relative">
                                 <span className="relative z-10 group-hover:text-foreground transition-colors">View Resume</span>
