@@ -6,8 +6,8 @@ import { CheckCircle2, Cpu, Users, Zap } from "lucide-react";
 
 export function Mindset() {
     return (
-        <section className="pt-24 pb-8 px-4 bg-linear-to-b from-background to-secondary/20">
-            <div className="w-full flex flex-col gap-3">
+        <section className="pt-24 pb-8 bg-linear-to-b from-background to-secondary/20">
+            <div className="w-full flex flex-col">
                 {/* How I Work - Large Panel */}
                 <div className="w-full">
                     <motion.div

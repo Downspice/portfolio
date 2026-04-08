@@ -3,7 +3,7 @@ import { EngineeringFocus } from "@/components/home/EngineeringFocus";
 
 export default function ExperiencePage() {
     return (
-        <main className="min-h-screen">
+        <main className=" ">
             <WorkExperience />
             <EngineeringFocus />
         </main>
