@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ExternalLink, Globe, LayoutDashboard } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, Globe, LayoutDashboard, X, Maximize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TechIcon } from "@/components/TechIcon";
 import Image from "next/image";
@@ -43,6 +44,8 @@ const projects = [
 ];
 
 export function WebProjects() {
+    const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+
     return (
         <section className="py-24 px-4 bg-background">
             <div className="container max-w-6xl mx-auto">
@@ -72,7 +75,8 @@ export function WebProjects() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.7, delay: index * 0.1 }}
-                            className="group flex flex-col h-full bg-secondary/20 rounded-[2rem] border border-border/50 overflow-hidden hover:border-primary/20 transition-all duration-500"
+                            className="group flex flex-col h-full bg-secondary/20 rounded-[2rem] border border-border/50 overflow-hidden hover:border-primary/20 transition-all duration-500 cursor-pointer"
+                            onClick={() => setSelectedProject(project)}
                         >
                             {/* Project Visual */}
                             <div className="relative aspect-[16/10] overflow-hidden">
@@ -82,7 +86,11 @@ export function WebProjects() {
                                     fill
                                     className="object-cover group-hover:scale-105 transition-transform duration-1000"
                                 />
-                                <div className="absolute inset-0 bg-linear-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                                    <div className="bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded-full text-white scale-90 group-hover:scale-100 transition-transform duration-300">
+                                        <Maximize2 className="w-6 h-6" />
+                                    </div>
+                                </div>
                                 
                                 {/* Tech Icons Overlay */}
                                 <div className="absolute top-4 right-4 flex gap-2">
@@ -110,6 +118,7 @@ export function WebProjects() {
                                         asChild
                                         className="w-full rounded-2xl gap-2 font-semibold shadow-md hover:shadow-lg transition-all duration-300"
                                         style={{ backgroundColor: project.colors.accent }}
+                                        onClick={(e) => e.stopPropagation()}
                                     >
                                         <a href={project.link} target="_blank" rel="noopener noreferrer">
                                             Visit Live Site <Globe className="w-4 h-4" />
@@ -131,6 +140,92 @@ export function WebProjects() {
                     ))}
                 </div>
             </div>
+
+            {/* Preview Modal */}
+            <AnimatePresence>
+                {selectedProject && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/90 backdrop-blur-sm"
+                        onClick={() => setSelectedProject(null)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            className="bg-background w-full max-w-5xl rounded-3xl overflow-hidden relative shadow-2xl overflow-y-auto max-h-[90vh]"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button 
+                                onClick={() => setSelectedProject(null)}
+                                className="absolute top-4 right-4 z-10 p-2 bg-black/20 hover:bg-black/40 rounded-full text-white backdrop-blur-md transition-colors"
+                            >
+                                <X className="w-5 h-5" />
+                            </button>
+
+                            <div className="flex flex-col lg:flex-row">
+                                <div className="lg:w-2/3 relative aspect-video lg:aspect-auto">
+                                    <Image
+                                        src={selectedProject.image}
+                                        alt={selectedProject.title}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+                                <div className="lg:w-1/3 p-8 md:p-12 flex flex-col justify-center">
+                                    <h4 
+                                        className="text-sm font-bold uppercase tracking-widest mb-2"
+                                        style={{ color: selectedProject.colors.accent }}
+                                    >
+                                        {selectedProject.subtitle}
+                                    </h4>
+                                    <h3 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight line-height-[1.1]">{selectedProject.title}</h3>
+                                    <p className="text-muted-foreground text-base leading-relaxed mb-8">
+                                        {selectedProject.description}
+                                    </p>
+                                    
+                                    <div className="space-y-4">
+                                        <div className="flex items-center gap-3">
+                                            <span className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Built With</span>
+                                            <div className="flex gap-2">
+                                                {selectedProject.stack.map(s => (
+                                                    <div key={s} className="px-3 py-1 rounded-full bg-muted flex items-center gap-2 text-xs font-medium">
+                                                        <TechIcon name={s} className="w-3.5 h-3.5" />
+                                                        {s}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-12 flex flex-col gap-3">
+                                        <Button 
+                                            size="lg"
+                                            className="w-full rounded-2xl gap-3 shadow-lg hover:shadow-xl transition-all duration-300"
+                                            style={{ backgroundColor: selectedProject.colors.accent }}
+                                            onClick={() => window.open(selectedProject.link, '_blank')}
+                                        >
+                                            Visit Live Site
+                                            <ExternalLink className="w-4 h-4" />
+                                        </Button>
+                                        <Button 
+                                            variant="ghost" 
+                                            size="lg" 
+                                            className="w-full rounded-2xl text-muted-foreground"
+                                            onClick={() => setSelectedProject(null)}
+                                        >
+                                            Close Preview
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 }
