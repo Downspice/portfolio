@@ -29,6 +29,7 @@ export const metadata: Metadata = {
 };
 
 import { Footer } from "@/components/Footer";
+import { Navbar } from "@/components/Navbar";
 
 export default function RootLayout({
   children,
@@ -40,7 +41,10 @@ export default function RootLayout({
       <body
         className={`${nunito.variable} antialiased selection:bg-primary/20`}
       >
-        {children}
+        <Navbar />
+        <div className="pt-20">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>
