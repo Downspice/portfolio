@@ -21,6 +21,7 @@ import {
     SiGreensock,
     SiGithub,
     SiLinkedin,
+    SiFigma,
 } from "react-icons/si";
 import { FileText } from "lucide-react";
 import { IconType } from "react-icons";
@@ -48,6 +49,7 @@ export const iconMap: Record<string, IconType> = {
     "NativeWind": SiTailwindcss,
     "GitHub": SiGithub,
     "LinkedIn": SiLinkedin,
+    "Figma": SiFigma,
     "Resume": FileText as IconType,
 };
 
