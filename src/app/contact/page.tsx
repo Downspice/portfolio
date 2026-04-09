@@ -74,9 +74,6 @@ export default function ContactPage() {
                                     <a href="https://github.com/Downspice" target="_blank" rel="noopener noreferrer" className="group w-12 h-12 rounded-xl bg-background hover:bg-secondary flex items-center justify-center transition-all border border-transparent hover:border-primary/20 shadow-sm">
                                         <TechIcon name="GitHub" className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
                                     </a>
-                                    <a href="https://www.linkedin.com/in/joseph-awer/" target="_blank" rel="noopener noreferrer" className="group w-12 h-12 rounded-xl bg-background hover:bg-secondary flex items-center justify-center transition-all border border-transparent hover:border-[#0A66C2]/20 shadow-sm">
-                                        <TechIcon name="LinkedIn" className="w-6 h-6 text-muted-foreground group-hover:text-[#0A66C2] transition-colors" />
-                                    </a>
                                 </div>
                             </div>
                         </div>

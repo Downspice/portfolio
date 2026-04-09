@@ -68,10 +68,6 @@ export function Footer() {
                                 <TechIcon name="GitHub" className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
                                 <span className="sr-only">GitHub</span>
                             </a>
-                            <a href="https://www.linkedin.com/in/joseph-awer/" target="_blank" rel="noopener noreferrer" className="group p-3 rounded-xl bg-secondary/50 hover:bg-secondary hover:text-[#0A66C2] transition-all border border-transparent hover:border-[#0A66C2]/20">
-                                <TechIcon name="LinkedIn" className="w-6 h-6 text-muted-foreground group-hover:text-[#0A66C2] transition-colors" />
-                                <span className="sr-only">LinkedIn</span>
-                            </a>
                             <a href="https://docs.google.com/document/d/1Kgei3zUYT3TPkn7CJem7U83X3vwnlyKEV_Y4eM_2anE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="group p-3 rounded-xl bg-secondary/50 hover:bg-secondary hover:text-foreground transition-all border border-transparent hover:border-foreground/20">
                                 <TechIcon name="Resume" className="w-6 h-6 text-muted-foreground group-hover:text-foreground transition-colors" />
                                 <span className="sr-only">Resume</span>

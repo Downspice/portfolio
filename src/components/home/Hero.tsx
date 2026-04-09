@@ -62,11 +62,6 @@ export function Hero() {
                             <TechIcon name="GitHub" className="w-5 h-5" />
                             <span className="sr-only">GitHub</span>
                         </a>
-                        <div className="w-1 h-1 rounded-full bg-border" />
-                        <a href="https://www.linkedin.com/in/joseph-awer/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2 text-sm font-medium hover:scale-105 transition-transform">
-                            <TechIcon name="LinkedIn" className="w-5 h-5" />
-                            <span className="sr-only">LinkedIn</span>
-                        </a>
                     </div>
                 </motion.div>
 
