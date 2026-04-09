@@ -17,7 +17,7 @@ export const professionalProjects: ProfessionalProject[] = [
         subtitle: "Tyre & Battery Management System",
         description: "A comprehensive web application for workshop managers at Amandi Work plant stations to track vehicles and site equipment nationwide.",
         stack: ["React", "shadcn", "Figma"],
-        image: "/projects/tbms.png",
+        image: "/tbms.png",
         color: "#E4B023"
     },
     {
@@ -26,7 +26,7 @@ export const professionalProjects: ProfessionalProject[] = [
         subtitle: "Healthcare Facility Automation",
         description: "A centralized platform for the National Health Insurance Authority to automate manual processes in the health facility credentialing cycle.",
         stack: ["Java", "Spring Boot", "Thymeleaf"],
-        image: "/projects/nhia-auth.png",
+        image: "/nhia.jpg",
         color: "#0d9488"
     },
     {
@@ -35,7 +35,7 @@ export const professionalProjects: ProfessionalProject[] = [
         subtitle: "Provider Application Portal",
         description: "An enterprise portal enabling health facility managers to apply for credentials and manage documentation streamline.",
         stack: ["Java", "Spring Boot", "Thymeleaf"],
-        image: "/projects/nhia-portal.png",
+        image: "/nhia.jpg",
         color: "#3b82f6"
     },
     {
@@ -53,7 +53,7 @@ export const professionalProjects: ProfessionalProject[] = [
         subtitle: "Insurance Brokerage System",
         description: "An end-to-end policy management system for brokers to track sales, manage upgrades, and maintain client relations effectively.",
         stack: ["React", "Next.js", "Python"],
-        image: "/projects/clickinsure.png",
+        image: "/clickinsure.png",
         color: "#6366f1"
     }
 ];

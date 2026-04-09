@@ -5,6 +5,7 @@ import { Briefcase, Boxes, ShieldCheck, Database, Layout } from "lucide-react";
 import { TechIcon } from "@/components/TechIcon";
 import { BackgroundOrbs } from "@/components/BackgroundOrbs";
 import { professionalProjects } from "@/lib/professionalProjects";
+import Image from "next/image";
 
 export function ProfessionalProjects() {
     return (
@@ -48,14 +49,29 @@ export function ProfessionalProjects() {
                             <div className="relative overflow-hidden rounded-[2rem] bg-secondary/10 border border-border/40 backdrop-blur-md p-8 md:p-12 flex flex-col lg:flex-row gap-12 items-center hover:bg-secondary/15 transition-all duration-700">
                                 
                                 {/* Decorative Icon/Visual Side */}
-                                <div className="w-full lg:w-1/3 flex-shrink-0 relative aspect-video lg:aspect-square rounded-2xl overflow-hidden bg-background/40 border border-white/5 flex items-center justify-center p-12">
+                                <div className="w-full lg:w-1/3 flex-shrink-0 relative aspect-video lg:aspect-square rounded-2xl overflow-hidden bg-background/40 border border-white/5 flex items-center justify-center">
                                      <div 
                                         className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-700"
                                         style={{ 
                                             background: `radial-gradient(circle at center, ${project.color}, transparent 70%)` 
                                         }}
                                      />
-                                     <ProjectIcon type={project.id} color={project.color} />
+                                     
+                                     {project.image ? (
+                                         <div className="relative w-full h-full">
+                                             <Image 
+                                                src={project.image}
+                                                alt={project.title}
+                                                fill
+                                                className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700 group-hover:scale-105 transition-transform duration-1000"
+                                             />
+                                             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-60" />
+                                         </div>
+                                     ) : (
+                                         <div className="p-12">
+                                            <ProjectIcon type={project.id} color={project.color} />
+                                         </div>
+                                     )}
                                      
                                      {/* Tech Cluster Floating */}
                                      <div className="absolute inset-0 pointer-events-none">
