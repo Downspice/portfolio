@@ -78,7 +78,7 @@ export function UIMockups() {
                     transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                     className="absolute bottom-40 right-[15%] text-primary"
                 >
-                    <TechIcon name="Figma" className="w-16 h-16" />
+                    <TechIcon name="Express" className="w-16 h-16" />
                 </motion.div>
             </div>
 

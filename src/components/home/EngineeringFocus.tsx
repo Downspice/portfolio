@@ -18,7 +18,7 @@ const areas = [
     {
         icon: Server,
         title: "Backend Systems",
-        description: "Designing scalable APIs and data models with Java and NestJS.",
+        description: "Designing scalable APIs and data models with Express, Java, and NestJS.",
     },
     {
         icon: Zap,

@@ -20,6 +20,7 @@ import {
     SiSocketdotio,
     SiVercel,
     SiGreensock,
+    SiExpress,
 } from "react-icons/si";
 import { IconType } from "react-icons";
 
@@ -53,6 +54,7 @@ const domains = [
         title: "Backend & Data",
         tools: [
             { name: "NestJS", icon: SiNestjs },
+            { name: "Express", icon: SiExpress },
             { name: "Spring Boot", icon: SiSpringboot },
             { name: "PostgreSQL", icon: SiPostgresql },
             { name: "Prisma", icon: SiPrisma },

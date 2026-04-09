@@ -138,6 +138,14 @@ export function Hero() {
                     >
                         <TechIcon name="Prisma" className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
                     </motion.div>
+
+                    <motion.div 
+                        animate={{ x: [0, -15, 0], y: [0, 10, 0], rotate: [0, 12, 0] }}
+                        transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+                        className="absolute bottom-1/4 -left-12 md:bottom-1/3 md:-left-20 z-20 bg-background/80 backdrop-blur-md p-3 rounded-2xl border border-white/10 shadow-xl"
+                    >
+                        <TechIcon name="Express" className="w-6 h-6 md:w-7 md:h-7 text-foreground" />
+                    </motion.div>
                 </motion.div>
 
             </div>

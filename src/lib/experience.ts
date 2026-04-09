@@ -32,7 +32,7 @@ export const experiences: ExperienceItem[] = [
         type: "Contract",
         focus: [
             "Developed diverse full-stack mobile applications for catalog and customer collection management.",
-            "Built a centralized full-stack web system for real-time sales monitoring.",
+            "Built a centralized full-stack web system with Express for real-time sales monitoring.",
             "Led website remodeling projects (WordPress) and new development for Nunu Constructions.",
             "Conducted stakeholder training and authored system design documentation (SDS) and user manuals."
         ]

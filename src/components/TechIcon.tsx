@@ -23,6 +23,7 @@ import {
     SiLinkedin,
     SiFigma,
     SiNestjs,
+    SiExpress,
 } from "react-icons/si";
 import { FileText } from "lucide-react";
 import { IconType } from "react-icons";
@@ -52,6 +53,7 @@ export const iconMap: Record<string, IconType> = {
     "LinkedIn": SiLinkedin,
     "Figma": SiFigma,
     "Nestjs": SiNestjs,
+    "Express": SiExpress,
     "Resume": FileText as IconType,
 };
 

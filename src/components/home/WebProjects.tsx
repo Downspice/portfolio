@@ -62,32 +62,22 @@ export function WebProjects() {
         <section className="relative py-24 px-4 bg-background overflow-hidden">
             <BackgroundOrbs />
             
-            {/* Floating Particles/Shapes */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                {[...Array(5)].map((_, i) => (
-                    <motion.div
-                        key={i}
-                        animate={{
-                            y: [0, Math.random() * -100, 0],
-                            x: [0, (Math.random() - 0.5) * 50, 0],
-                            rotate: [0, 360],
-                            opacity: [0.1, 0.3, 0.1]
-                        }}
-                        transition={{
-                            duration: 10 + Math.random() * 10,
-                            repeat: Infinity,
-                            ease: "linear",
-                            delay: i * 2
-                        }}
-                        className="absolute text-primary"
-                        style={{
-                            top: `${Math.random() * 100}%`,
-                            left: `${Math.random() * 100}%`,
-                        }}
-                    >
-                        <Sparkles className="w-8 h-8 md:w-12 md:h-12" />
-                    </motion.div>
-                ))}
+            {/* Floating Tech Icons */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
+                <motion.div
+                    animate={{ y: [0, -40, 0], x: [0, 20, 0], rotate: [0, 360] }}
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    className="absolute top-[15%] left-[5%] text-primary"
+                >
+                    <TechIcon name="Express" className="w-16 h-16" />
+                </motion.div>
+                <motion.div
+                    animate={{ y: [0, 40, 0], x: [0, -20, 0], rotate: [360, 0] }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="absolute bottom-[20%] right-[8%] text-primary"
+                >
+                    <TechIcon name="Next.js" className="w-20 h-20" />
+                </motion.div>
             </div>
 
             <div className="container max-w-6xl mx-auto relative z-10">

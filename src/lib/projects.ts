@@ -57,6 +57,7 @@ export const projects: CaseStudy[] = [
         },
         techStack: [
             { name: "Next.js" },
+            { name: "Express" },
             { name: "TypeScript" },
             { name: "PostgreSQL" },
             { name: "Redis" },
