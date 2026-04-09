@@ -45,7 +45,7 @@ const projects = [
     {
         title: "Trip (Personal Version)",
         subtitle: "Travel Management System",
-        description: "A fully customizable travel management system for SHS students to book trips and for parents to book visits to their wards securely.",
+        description: "A fully customizable travel management system for SHS students to book trips and for parents to book visits to their wards securely. \n\nNote: To see the admin side, go to https://trip-web-indol-nu.vercel.app/admin with Email: admin@trip.com and Password: Admin@123",
         stack: ["Next.js", "Nestjs", "React", "PostgreSQL", "Prisma"],
         image: "/trip-management.png",
         link: "https://trip-web-indol-nu.vercel.app/",
@@ -141,7 +141,7 @@ export function WebProjects() {
                                         <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/70">{project.subtitle}</span>
                                     </div>
                                     
-                                    <p className="text-muted-foreground text-sm leading-relaxed mb-8 flex-1">
+                                    <p className="text-muted-foreground text-sm leading-relaxed mb-8 flex-1 whitespace-pre-line">
                                         {project.description}
                                     </p>
 
@@ -219,7 +219,7 @@ export function WebProjects() {
                                         {selectedProject.subtitle}
                                     </h4>
                                     <h3 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight line-height-[1.1]">{selectedProject.title}</h3>
-                                    <p className="text-muted-foreground text-base leading-relaxed mb-8">
+                                    <p className="text-muted-foreground text-base leading-relaxed mb-8 whitespace-pre-line">
                                         {selectedProject.description}
                                     </p>
                                     
