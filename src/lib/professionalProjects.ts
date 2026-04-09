@@ -16,7 +16,7 @@ export const professionalProjects: ProfessionalProject[] = [
         title: "TBMS",
         subtitle: "Tyre & Battery Management System",
         description: "A comprehensive web application for workshop managers at Amandi Work plant stations to track vehicles and site equipment nationwide.",
-        stack: ["React", "Taiga-UI", "Figma"],
+        stack: ["React", "shadcn", "Figma"],
         image: "/projects/tbms.png",
         color: "#E4B023"
     },

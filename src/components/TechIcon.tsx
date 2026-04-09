@@ -26,6 +26,7 @@ import {
     SiOpenjdk,
     SiThymeleaf,
     SiKeycloak,
+    SiShadcnui,
 } from "react-icons/si";
 import { FileText, LayoutDashboard } from "lucide-react";
 import { IconType } from "react-icons";
@@ -58,7 +59,7 @@ export const iconMap: Record<string, IconType> = {
     "Java": SiOpenjdk,
     "Thymeleaf": SiThymeleaf,
     "Keycloak": SiKeycloak,
-    "Taiga-UI": LayoutDashboard as IconType,
+    "shadcn": SiShadcnui,
     "Resume": FileText as IconType,
 };
 
