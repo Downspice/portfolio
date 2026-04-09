@@ -35,47 +35,61 @@ export function WorkExperience() {
 
                 <div className="flex flex-col md:flex-row gap-8 lg:gap-12 min-h-[500px]">
                     {/* Left Sidebar Menu */}
-                    <div className="w-full md:w-1/3 flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory">
-                        {/* Custom scroll hides on webkit, or we could add a hide-scrollbar class */}
-                        <style jsx global>{`
-                            .no-scrollbar::-webkit-scrollbar {
-                                display: none;
-                            }
-                            .no-scrollbar {
-                                -ms-overflow-style: none;  /* IE and Edge */
-                                scrollbar-width: none;  /* Firefox */
-                            }
-                        `}</style>
-                        <div className="flex flex-row md:flex-col gap-3 w-max md:w-full no-scrollbar px-2 md:px-0">
-                            {experiences.map((role, index) => {
-                                const isActive = index === activeIndex;
-                                return (
-                                    <button
-                                        key={role.id}
-                                        onClick={() => setActiveIndex(index)}
-                                        className={cn(
-                                            "relative flex items-center justify-between text-left p-4 md:p-5 rounded-2xl transition-all duration-300 min-w-[220px] md:min-w-0 snap-center shrink-0 border border-transparent z-10",
-                                            isActive 
-                                                ? "text-primary shadow-sm" 
-                                                : "hover:bg-muted/50 text-muted-foreground hover:text-foreground hover:border-border/50"
-                                        )}
-                                    >
-                                        <div className="flex flex-col gap-1 z-10">
-                                            <span className={cn("font-bold text-sm md:text-base transition-colors", isActive ? "text-primary" : "")}>{role.company}</span>
-                                            <span className="text-xs font-medium opacity-80">{role.period.split(" ")[0]} {role.period.split(" ")[2] || role.period.split(" ")[1]}</span>
-                                        </div>
-                                        <ChevronRight className={cn("w-4 h-4 transition-transform duration-300 hidden md:block z-10", isActive ? "translate-x-1" : "opacity-0 -translate-x-2")} />
-                                        
-                                        {isActive && (
-                                            <motion.div 
-                                                layoutId="active-experience-bg"
-                                                className="absolute inset-0 bg-primary/5 rounded-2xl border border-primary/10 -z-10"
-                                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                                            />
-                                        )}
-                                    </button>
-                                );
-                            })}
+                    <div className="w-full md:w-1/3 relative group/nav">
+                        {/* Scroll indicator for mobile */}
+                        <div className="absolute right-0 top-0 bottom-4 w-12 bg-linear-to-l from-background to-transparent z-20 md:hidden pointer-events-none" />
+                        
+                        <motion.div 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: [0, 1, 0] }}
+                            transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 z-30 md:hidden text-primary pointer-events-none flex flex-col items-center gap-1"
+                        >
+                            <ChevronRight className="w-5 h-5" />
+                            <span className="text-[8px] font-bold uppercase tracking-widest whitespace-nowrap">Swipe</span>
+                        </motion.div>
+
+                        <div className="w-full flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory no-scrollbar relative">
+                            <style jsx global>{`
+                                .no-scrollbar::-webkit-scrollbar {
+                                    display: none;
+                                }
+                                .no-scrollbar {
+                                    -ms-overflow-style: none;  /* IE and Edge */
+                                    scrollbar-width: none;  /* Firefox */
+                                }
+                            `}</style>
+                            <div className="flex flex-row md:flex-col gap-3 w-max md:w-full px-2 md:px-0">
+                                {experiences.map((role, index) => {
+                                    const isActive = index === activeIndex;
+                                    return (
+                                        <button
+                                            key={role.id}
+                                            onClick={() => setActiveIndex(index)}
+                                            className={cn(
+                                                "relative flex items-center justify-between text-left p-4 md:p-5 rounded-2xl transition-all duration-300 min-w-[220px] md:min-w-0 snap-center shrink-0 border border-transparent z-10",
+                                                isActive 
+                                                    ? "text-primary shadow-sm" 
+                                                    : "hover:bg-muted/50 text-muted-foreground hover:text-foreground hover:border-border/50"
+                                            )}
+                                        >
+                                            <div className="flex flex-col gap-1 z-10">
+                                                <span className={cn("font-bold text-sm md:text-base transition-colors", isActive ? "text-primary" : "")}>{role.company}</span>
+                                                <span className="text-xs font-medium opacity-80">{role.period}</span>
+                                            </div>
+                                            <ChevronRight className={cn("w-4 h-4 transition-transform duration-300 hidden md:block z-10", isActive ? "translate-x-1" : "opacity-0 -translate-x-2")} />
+                                            
+                                            {isActive && (
+                                                <motion.div 
+                                                    layoutId="active-experience-bg"
+                                                    className="absolute inset-0 bg-primary/5 rounded-2xl border border-primary/10 -z-10"
+                                                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                                />
+                                            )}
+                                        </button>
+                                    );
+                                })}
+                            </div>
                         </div>
                     </div>
 
