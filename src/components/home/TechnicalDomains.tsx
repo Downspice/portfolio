@@ -7,7 +7,6 @@ import {
     SiReact,
     SiExpo,
     SiNextdotjs,
-    SiAngular,
     SiTypescript,
     SiTailwindcss,
     SiFramer,

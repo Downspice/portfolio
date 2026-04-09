@@ -4,7 +4,6 @@ import {
     SiReact,
     SiExpo,
     SiNextdotjs,
-    SiAngular,
     SiTypescript,
     SiTailwindcss,
     SiFramer,
@@ -24,8 +23,11 @@ import {
     SiFigma,
     SiNestjs,
     SiExpress,
+    SiOpenjdk,
+    SiThymeleaf,
+    SiKeycloak,
 } from "react-icons/si";
-import { FileText } from "lucide-react";
+import { FileText, LayoutDashboard } from "lucide-react";
 import { IconType } from "react-icons";
 
 export const iconMap: Record<string, IconType> = {
@@ -33,7 +35,6 @@ export const iconMap: Record<string, IconType> = {
     "React Native": SiReact,
     "Expo": SiExpo,
     "Next.js": SiNextdotjs,
-    "Angular": SiAngular,
     "TypeScript": SiTypescript,
     "Tailwind CSS": SiTailwindcss,
     "Framer Motion": SiFramer,
@@ -54,6 +55,10 @@ export const iconMap: Record<string, IconType> = {
     "Figma": SiFigma,
     "Nestjs": SiNestjs,
     "Express": SiExpress,
+    "Java": SiOpenjdk,
+    "Thymeleaf": SiThymeleaf,
+    "Keycloak": SiKeycloak,
+    "Taiga-UI": LayoutDashboard as IconType,
     "Resume": FileText as IconType,
 };
 
