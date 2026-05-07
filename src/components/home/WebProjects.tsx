@@ -45,7 +45,7 @@ const projects = [
     {
         title: "Trip (Personal Version)",
         subtitle: "Travel Management System",
-        description: "A fully customizable travel management system for SHS students to book trips and for parents to book visits to their wards securely. \n\nNote: To see the admin side, go to https://trip-web-indol-nu.vercel.app/admin with Email: admin@trip.com and Password: Admin@123",
+        description: "A fully customizable travel management system for SHS students to book trips and for parents to book visits to their wards securely. \n\nNote: To see the admin side, go to https://trip-web-indol-nu.vercel.app/admin with contact me for the login details",
         stack: ["Next.js", "Nestjs", "React", "PostgreSQL", "Prisma"],
         image: "/trip-management.png",
         link: "https://trip-web-indol-nu.vercel.app/",
