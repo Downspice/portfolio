@@ -1,11 +1,25 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
+import { Bebas_Neue, Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import { Footer } from "@/components/Footer";
+import { Navbar } from "@/components/Navbar";
 
-const nunito = Nunito({
-  variable: "--font-nunito",
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas-neue",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -15,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Joseph Awer | Software Developer",
     description: "Building performant, scalable applications with Expo, Next.js, and Python.",
-    url: "https://josephawer.com", // Placeholder or actual if known, keeping generic if not. safely assuming localhost or generic for now, user didn't specify URL. Let's omit URL or use a placeholder.
+    url: "https://josephawer.com",
     siteName: "Joseph Awer Portfolio",
     locale: "en_US",
     type: "website",
@@ -24,12 +38,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Joseph Awer | Software Developer",
     description: "Mobile & Full-Stack Systems Specialist.",
-    creator: "@Downspice", // Assuming based on GitHub handle pattern or leaving blank if unknown. User didn't provide specific Twitter. adhering to "Downspice" from github if safe, but better to be safe. I will omit creator if not sure. Actually, user provided links: GitHub, LinkedIn, WhatsApp, Email, Phone. No Twitter. I'll omit creator/site for twitter.
   },
 };
-
-import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
 
 export default function RootLayout({
   children,
@@ -37,12 +47,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={`${nunito.variable} antialiased selection:bg-primary/20`}
+        className={`${bebasNeue.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable} antialiased grain-overlay`}
       >
         <Navbar />
-        <div className="pt-20">
+        <div className="pt-16">
           {children}
         </div>
         <Footer />

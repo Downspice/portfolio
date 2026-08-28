@@ -3,163 +3,125 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { TechIcon } from "@/components/TechIcon";
+import { Marquee } from "@/components/Marquee";
 import Image from "next/image";
 import Link from "next/link";
 
+const SKILLS = [
+  "REACT NATIVE", "NEXT.JS", "TYPESCRIPT", "EXPO", "POSTGRESQL",
+  "NESTJS", "PRISMA", "FIGMA", "EXPRESS", "TAILWIND",
+];
+
 export function Hero() {
-    return (
-        <section className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden px-4 md:px-6 py-24">
-            {/* Background Ambience */}
-            <div className="absolute inset-0 -z-10 pointer-events-none">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-50 mix-blend-multiply animate-blob" />
-                <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-secondary/40 rounded-full blur-3xl opacity-60 mix-blend-multiply animate-blob animation-delay-2000" />
-                <div className="absolute bottom-1/4 left-1/2 w-96 h-96 bg-accent/30 rounded-full blur-3xl opacity-50 mix-blend-multiply animate-blob animation-delay-4000" />
+  return (
+    <>
+      <section className="relative min-h-screen flex flex-col overflow-hidden isolate">
+        {/* Right-half background photo */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="absolute inset-y-0 right-0 w-full sm:w-[60%] md:w-[55%] lg:w-1/2 z-0"
+          aria-hidden="true"
+        >
+          <div className="relative w-full h-full">
+            <Image
+              src="/JOSEPH.JPG"
+              alt=""
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover object-top md:object-[center_20%] grayscale"
+              priority
+            />
+          </div>
+          {/* Blend into left content area — lighter so photo stays visible */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background from-15% via-background/40 via-35% to-transparent" />
+        </motion.div>
+
+        {/* Ambient blobs — left side only */}
+        <div className="absolute inset-0 z-[1] pointer-events-none">
+          <div className="absolute top-1/4 left-0 w-[400px] h-[400px] bg-primary/8 rounded-full blur-[120px] animate-blob" />
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-accent/5 rounded-full blur-[100px] animate-blob animation-delay-2000" />
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)",
+            }}
+          />
+        </div>
+
+        <div className="flex-1 container max-w-7xl mx-auto px-4 md:px-8 pt-12 pb-8 flex flex-col justify-center relative z-10">
+          {/* Top meta row */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-8 md:mb-12"
+          >
+            <span className="section-tag">Accra, Ghana · Available Now</span>
+          </motion.div>
+
+          {/* Name + role — left half */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-xl lg:max-w-2xl space-y-2"
+          >
+            <h1 className="font-display leading-[0.85]">
+              <span className="block text-foreground glitch-text" data-text="JOSEPH">JOSEPH</span>
+              <span className="block text-primary glitch-text" data-text="AWER">AWER</span>
+            </h1>
+            <div className="flex flex-wrap items-center gap-3 pt-4">
+              <span className="font-mono-label text-sm md:text-base text-muted-foreground uppercase tracking-widest">
+                Software Developer
+              </span>
+              <span className="text-border">|</span>
+              <span className="font-mono-label text-sm md:text-base text-accent uppercase tracking-widest">
+                Full-Stack · Mobile
+              </span>
             </div>
+          </motion.div>
 
-            <div className="container max-w-5xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-12 z-10">
+          {/* Bottom row — bio + CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-12 md:mt-16 max-w-xl lg:max-w-none lg:grid lg:grid-cols-2 lg:gap-8 items-end border-t-2 border-border pt-8"
+          >
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-0">
+              Building performant apps with{" "}
+              <span className="text-foreground font-semibold">Expo</span>,{" "}
+              <span className="text-foreground font-semibold">React</span> &{" "}
+              <span className="text-foreground font-semibold">Next.js</span>.
+              Code with culture. Ship with confidence.
+            </p>
 
-                {/* Text Content */}
-                <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="flex-1 flex flex-col items-center md:items-start text-center md:text-left space-y-6"
-                >
-                    <Link href="/contact" className="inline-block mb-2 group">
-                        <div className="px-3 py-1 rounded-full glass-panel text-sm font-medium text-muted-foreground group-hover:text-primary group-hover:border-primary/20 transition-all duration-300">
-                            Available for new opportunities
-                        </div>
-                    </Link>
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground text-balance">
-                        Joseph Awer<br />
-                        <span className="text-3xl md:text-5xl lg:text-5xl text-muted-foreground block mt-2">
-                            Software Developer
-                        </span>
-                    </h1>
-                    <p className="text-xl text-muted-foreground max-w-lg text-balance leading-relaxed pt-2">
-                        Mobile & Full-Stack Systems Specialist.<br />
-                        Building performant applications with <span className="text-foreground font-medium">Expo</span>, <span className="text-foreground font-medium">React</span>, and <span className="text-foreground font-medium">Javascript</span>.
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-4">
-                        <Link href="/projects" className="w-full sm:w-auto">
-                            <Button size="lg" className="relative group h-12 px-8 text-base w-full shadow-lg transition-all duration-300 overflow-hidden">
-                                <span className="relative z-10">View Projects</span>
-                                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
-                                <div className="absolute inset-0 -z-10 shadow-[0_0_30px_-5px_rgba(var(--primary),0.5)] group-hover:shadow-[0_0_40px_0px_rgba(var(--primary),0.7)] transition-shadow duration-500" />
-                            </Button>
-                        </Link>
-                        <a href="https://docs.google.com/document/d/1Kgei3zUYT3TPkn7CJem7U83X3vwnlyKEV_Y4eM_2anE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                            <Button size="lg" variant="outline" className="h-12 px-8 text-base bg-white/50 backdrop-blur-sm border-white/20 hover:bg-white/80 dark:bg-black/20 dark:hover:bg-black/40 gap-2">
-                                <TechIcon name="Resume" className="w-4 h-4" />
-                                Resume
-                            </Button>
-                        </a>
-                    </div>
-
-                    <div className="flex items-center gap-6 mt-4 text-muted-foreground">
-                        <a href="https://github.com/Downspice" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2 text-sm font-medium hover:scale-105 transition-transform">
-                            <TechIcon name="GitHub" className="w-5 h-5" />
-                            <span className="sr-only">GitHub</span>
-                        </a>
-                    </div>
-                </motion.div>
-
-                {/* Photo */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9, x: 30 }}
-                    animate={{ opacity: 1, scale: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                    className="relative shrink-0"
-                >
-                    <div className="relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl glass-panel relative z-10">
-                        <Image
-                            src="/JOSEPH.JPG"
-                            alt="Joseph Awer"
-                            fill
-                            className="object-cover"
-                            priority
-                        />
-                    </div>
-                    {/* Decorative ring */}
-                    <div className="absolute inset-0 -m-6 rounded-full border-2 border-primary/30 border-dashed animate-spin-slow pointer-events-none shadow-[0_0_30px_-5px_var(--primary)] backdrop-blur-[1px]" style={{ animationDuration: '25s' }} />
-                    <div className="absolute inset-0 -m-10 rounded-full border border-accent/20 border-dotted animate-spin-slow pointer-events-none" style={{ animationDuration: '35s', animationDirection: 'reverse' }} />
-
-                    {/* Drifting Icons */}
-                    <motion.div 
-                        animate={{ y: [0, -15, 0], rotate: [0, 10, 0] }}
-                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute -top-4 -left-4 md:-top-6 md:-left-6 z-20 bg-background/80 backdrop-blur-md p-3 md:p-4 rounded-2xl border border-white/10 shadow-xl"
-                    >
-                        <TechIcon name="React" className="w-6 h-6 md:w-8 md:h-8 text-[#61DAFB]" />
-                    </motion.div>
-                    
-                    <motion.div 
-                        animate={{ y: [0, 20, 0], rotate: [0, -15, 0] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                        className="absolute bottom-6 -right-4 md:bottom-10 md:-right-8 z-20 bg-background/80 backdrop-blur-md p-3 md:p-4 rounded-2xl border border-white/10 shadow-xl"
-                    >
-                        <TechIcon name="Next.js" className="w-6 h-6 md:w-8 md:h-8 text-foreground" />
-                    </motion.div>
-
-                    <motion.div 
-                        animate={{ y: [0, -20, 0], rotate: [0, -10, 0] }}
-                        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                        className="absolute -top-2 -right-6 md:-top-4 md:-right-12 z-20 bg-background/80 backdrop-blur-md p-2 md:p-3 rounded-2xl border border-white/10 shadow-xl"
-                    >
-                        <TechIcon name="Figma" className="w-5 h-5 md:w-7 md:h-7 text-[#F24E1E]" />
-                    </motion.div>
-
-                    <motion.div 
-                        animate={{ y: [0, 15, 0], rotate: [0, 15, 0] }}
-                        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                        className="absolute bottom-4 -left-6 md:bottom-8 md:-left-12 z-20 bg-background/80 backdrop-blur-md p-2 md:p-3 rounded-2xl border border-white/10 shadow-xl"
-                    >
-                        <TechIcon name="PostgreSQL" className="w-5 h-5 md:w-7 md:h-7 text-[#4169E1]" />
-                    </motion.div>
-
-                    <motion.div 
-                        animate={{ x: [0, -10, 0], y: [0, -10, 0], rotate: [0, 5, 0] }}
-                        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                        className="absolute top-1/2 -left-8 md:top-1/3 md:-left-16 z-20 bg-background/80 backdrop-blur-md p-2 rounded-2xl border border-white/10 shadow-xl"
-                    >
-                        <TechIcon name="TypeScript" className="w-4 h-4 md:w-6 md:h-6 text-[#3178C6]" />
-                    </motion.div>
-
-                    <motion.div 
-                        animate={{ x: [0, 10, 0], y: [0, -5, 0], rotate: [0, -8, 0] }}
-                        transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
-                        className="absolute top-2/3 -right-6 md:top-2/3 md:-right-14 z-20 bg-background/80 backdrop-blur-md p-2 rounded-2xl border border-white/10 shadow-xl"
-                    >
-                        <TechIcon name="Prisma" className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
-                    </motion.div>
-
-                    <motion.div 
-                        animate={{ x: [0, -15, 0], y: [0, 10, 0], rotate: [0, 12, 0] }}
-                        transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-                        className="absolute bottom-1/4 -left-12 md:bottom-1/3 md:-left-20 z-20 bg-background/80 backdrop-blur-md p-3 rounded-2xl border border-white/10 shadow-xl"
-                    >
-                        <TechIcon name="Express" className="w-6 h-6 md:w-7 md:h-7 text-foreground" />
-                    </motion.div>
-                </motion.div>
-
+            <div className="flex flex-col sm:flex-row gap-4 mt-8 lg:mt-0 lg:justify-end">
+              <Link href="/projects" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full">
+                  View Projects
+                </Button>
+              </Link>
+              <a
+                href="https://docs.google.com/document/d/1Kgei3zUYT3TPkn7CJem7U83X3vwnlyKEV_Y4eM_2anE/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto"
+              >
+                <Button size="lg" variant="outline" className="w-full gap-2">
+                  <TechIcon name="Resume" className="w-4 h-4" />
+                  Resume
+                </Button>
+              </a>
             </div>
+          </motion.div>
+        </div>
+      </section>
 
-            {/* Scroll indicator */}
-            {/* <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 1 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 text-muted-foreground/50"
-            >
-                <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center p-1">
-                    <motion.div
-                        animate={{ y: [0, 8, 0] }}
-                        transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                        className="w-1 h-1.5 bg-muted-foreground/50 rounded-full"
-                    />
-                </div>
-            </motion.div> */}
-        </section>
-    );
+      {/* Skills marquee ticker */}
+      <Marquee items={SKILLS} speed="fast" />
+    </>
+  );
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { experiences } from "@/lib/experience";
 import { Briefcase, Calendar, MapPin, ChevronRight } from "lucide-react";
+import { SectionHeader } from "@/components/SectionHeader";
 import { cn } from "@/lib/utils";
 
 export function WorkExperience() {
@@ -23,14 +24,14 @@ export function WorkExperience() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center space-y-4"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
-                        Professional <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Experience</span>
-                    </h2>
-                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        A timeline of technical leadership, system architecture, and delivering impact across diverse environments.
-                    </p>
+                    <SectionHeader
+                        number="02"
+                        tag="The Journey"
+                        title="EXPERIENCE"
+                        subtitle="A timeline of technical leadership, system architecture, and delivering impact across diverse environments."
+                        align="center"
+                    />
                 </motion.div>
 
                 <div className="flex flex-col md:flex-row gap-8 lg:gap-12 min-h-[500px]">

@@ -41,36 +41,36 @@ export function ContactForm() {
             <div className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                        <label htmlFor="name" className="text-sm font-medium text-foreground">Name</label>
+                        <label htmlFor="name" className="font-mono-label text-[10px] uppercase tracking-widest text-muted-foreground">Name</label>
                         <input 
                             type="text" 
                             id="name" 
                             name="name" 
                             required 
-                            className="w-full h-12 px-4 rounded-xl border border-white/10 bg-background/50 focus:bg-background/80 focus:border-primary/50 focus:outline-hidden focus:ring-1 focus:ring-primary/50 transition-all duration-300 shadow-sm"
+                            className="w-full h-12 px-4 border-2 border-border bg-background focus:border-primary focus:outline-none transition-all duration-300"
                             placeholder="John Doe"
                         />
                     </div>
                     <div className="space-y-2">
-                        <label htmlFor="email" className="text-sm font-medium text-foreground">Email</label>
+                        <label htmlFor="email" className="font-mono-label text-[10px] uppercase tracking-widest text-muted-foreground">Email</label>
                         <input 
                             type="email" 
                             id="email" 
                             name="email" 
                             required 
-                            className="w-full h-12 px-4 rounded-xl border border-white/10 bg-background/50 focus:bg-background/80 focus:border-primary/50 focus:outline-hidden focus:ring-1 focus:ring-primary/50 transition-all duration-300 shadow-sm"
+                            className="w-full h-12 px-4 border-2 border-border bg-background focus:border-primary focus:outline-none transition-all duration-300"
                             placeholder="john@example.com"
                         />
                     </div>
                 </div>
                 <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium text-foreground">Message</label>
+                    <label htmlFor="message" className="font-mono-label text-[10px] uppercase tracking-widest text-muted-foreground">Message</label>
                     <textarea 
                         id="message" 
                         name="message" 
                         required 
                         rows={6}
-                        className="w-full p-4 rounded-xl border border-white/10 bg-background/50 focus:bg-background/80 focus:border-primary/50 focus:outline-hidden focus:ring-1 focus:ring-primary/50 transition-all duration-300 resize-none shadow-sm"
+                        className="w-full p-4 border-2 border-border bg-background focus:border-primary focus:outline-none transition-all duration-300 resize-none"
                         placeholder="Tell me about your project..."
                     />
                 </div>
@@ -80,20 +80,19 @@ export function ContactForm() {
                 type="submit" 
                 size="lg" 
                 disabled={status === "loading" || status === "success"}
-                className={`w-full relative group h-14 overflow-hidden transition-all duration-300 ${status === "success" ? "bg-green-500 hover:bg-green-600 text-white" : ""}`}
+                className={`w-full h-14 ${status === "success" ? "bg-accent border-accent text-accent-foreground hover:bg-accent" : ""}`}
             >
-                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
-                <span className="relative z-10 flex items-center justify-center gap-2">
+                <span className="flex items-center justify-center gap-2">
                     {status === "loading" && <Loader2 className="w-5 h-5 animate-spin" />}
-                    {status === "idle" && <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
+                    {status === "idle" && <Send className="w-5 h-5" />}
                     {status === "success" && "Message Sent!"}
-                    {status === "error" && "Failed to Send - Try Again"}
+                    {status === "error" && "Failed — Try Again"}
                     {status === "idle" && "Send Message"}
                 </span>
             </Button>
             
             {status === "success" && (
-                <p className="text-sm text-green-500 text-center animate-in fade-in slide-in-from-bottom-2 mt-4">
+                <p className="text-sm text-accent text-center mt-4 font-mono-label">
                     Thanks for reaching out! I'll get back to you soon.
                 </p>
             )}

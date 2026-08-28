@@ -1,50 +1,81 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
-const COLUMNS = 6;
+function getRouteLabel(pathname: string): string {
+  if (pathname === "/") return "HOME";
+  const segment = pathname.split("/").filter(Boolean)[0];
+  return segment.replace(/-/g, " ").toUpperCase();
+}
 
-/**
- * A premium stair-step transition that plays on every route change.
- * Replaces the old "blue loader" with a more sophisticated reveal effect.
- */
 export default function StairTransition({ children }: { children: React.ReactNode }) {
-    const pathname = usePathname();
+  const pathname = usePathname();
+  const prefersReducedMotion = useReducedMotion();
+  const routeLabel = getRouteLabel(pathname);
 
-    return (
-        <>
-            {/* Stair Overlay */}
-            <div className="fixed inset-0 pointer-events-none z-[9999] flex">
-                {[...Array(COLUMNS)].map((_, i) => (
-                    <motion.div
-                        key={`${pathname}-step-${i}`}
-                        className="h-screen flex-1 bg-primary dark:bg-primary relative border-x border-white/5"
-                        initial={{ scaleY: 1 }}
-                        animate={{ scaleY: 0 }}
-                        transition={{
-                            duration: 0.8,
-                            ease: [0.645, 0.045, 0.355, 1], // easeInOutQuart
-                            delay: i * 0.06,
-                        }}
-                        style={{ originY: 0 }} // Slides up to reveal
-                    >
-                        {/* Subtle highlight/glow on each step */}
-                        <div className="absolute inset-x-0 bottom-0 h-[1px] bg-primary/20" />
-                    </motion.div>
-                ))}
-            </div>
+  if (prefersReducedMotion) {
+    return <div className="w-full h-full">{children}</div>;
+  }
 
-            {/* Content holder with a slight fade and slide to match the transition */}
-            <motion.div
-                key={`content-${pathname}`}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.6 }}
-                className="w-full h-full"
-            >
-                {children}
-            </motion.div>
-        </>
-    );
+  return (
+    <>
+      {/* Brutalist horizontal wipe — slides left to reveal page */}
+      <motion.div
+        key={`wipe-${pathname}`}
+        className="fixed inset-0 z-[9999] pointer-events-none bg-background overflow-hidden"
+        initial={{ x: "0%" }}
+        animate={{ x: "-100%" }}
+        transition={{
+          duration: 0.7,
+          ease: [0.76, 0, 0.24, 1],
+          delay: 0.05,
+        }}
+      >
+        {/* Gold leading edge */}
+        <div className="absolute right-0 inset-y-0 w-[3px] bg-primary" />
+        {/* Brutalist offset shadow */}
+        <div className="absolute right-0 inset-y-0 w-1 translate-x-1 bg-primary/40" />
+
+        {/* Oversized route watermark */}
+        <div className="absolute inset-0 flex items-center justify-end pr-16 md:pr-24 overflow-hidden">
+          <motion.span
+            className="font-display text-[18vw] md:text-[14vw] leading-none text-foreground/[0.04] select-none tracking-wider whitespace-nowrap"
+            initial={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 0, x: -40 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            {routeLabel}
+          </motion.span>
+        </div>
+
+        {/* Scanline texture */}
+        <div
+          className="absolute inset-0 opacity-[0.05] pointer-events-none"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.08) 2px, rgba(255,255,255,0.08) 4px)",
+          }}
+        />
+
+        {/* Corner label */}
+        <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12">
+          <span className="font-mono-label text-[10px] uppercase tracking-[0.4em] text-muted-foreground">
+            JA · {routeLabel}
+          </span>
+        </div>
+      </motion.div>
+
+      {/* Page content enters from the right */}
+      <motion.div
+        key={`content-${pathname}`}
+        initial={{ opacity: 0, x: 24 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.45, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+        className="w-full h-full"
+      >
+        {children}
+      </motion.div>
+    </>
+  );
 }

@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Calendar, MapPin } from "lucide-react";
+import { SectionHeader } from "@/components/SectionHeader";
+import { Calendar, MapPin } from "lucide-react";
 import { education } from "@/lib/education";
 
 export function Education() {
@@ -20,18 +21,14 @@ export function Education() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="md:w-1/3 space-y-4"
+                        className="md:w-1/3"
                     >
-                        <div className="flex items-center gap-3 text-primary font-bold uppercase tracking-widest text-xs">
-                            <GraduationCap className="w-5 h-5" />
-                            <span>Academic History</span>
-                        </div>
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
-                            Education
-                        </h2>
-                        <p className="text-muted-foreground leading-relaxed">
-                            My academic foundation in Information Technology and the milestone achievements that shaped my technical journey.
-                        </p>
+                        <SectionHeader
+                            number="05"
+                            tag="Academic History"
+                            title="EDUCATION"
+                            subtitle="My academic foundation in Information Technology and the milestone achievements that shaped my technical journey."
+                        />
                     </motion.div>
 
                     {/* Right Side: Timeline */}

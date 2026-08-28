@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Briefcase, Boxes, ShieldCheck, Database, Layout } from "lucide-react";
+import { SectionHeader } from "@/components/SectionHeader";
+import { Boxes, ShieldCheck, Database, Layout } from "lucide-react";
 import { TechIcon } from "@/components/TechIcon";
 import { BackgroundOrbs } from "@/components/BackgroundOrbs";
 import { professionalProjects } from "@/lib/professionalProjects";
@@ -19,19 +20,13 @@ export function ProfessionalProjects() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="flex flex-col md:flex-row md:items-end justify-between gap-8"
                     >
-                        <div className="space-y-4">
-                            <div className="flex items-center gap-3 text-primary font-bold uppercase tracking-[0.2em] text-[10px]">
-                                <span className="h-px w-8 bg-primary/40" />
-                                <Briefcase className="w-4 h-4" />
-                                <span>Industry Experience</span>
-                            </div>
-                            <h2 className="text-4xl md:text-6xl font-bold tracking-tight">Real-World Projects</h2>
-                            <p className="text-muted-foreground text-lg max-w-xl">
-                                High-impact enterprise systems developed for national authorities and diverse industries across Ghana.
-                            </p>
-                        </div>
+                        <SectionHeader
+                            number="01"
+                            tag="Industry Work"
+                            title="REAL-WORLD PROJECTS"
+                            subtitle="High-impact enterprise systems developed for national authorities and diverse industries across Ghana."
+                        />
                     </motion.div>
                 </div>
 

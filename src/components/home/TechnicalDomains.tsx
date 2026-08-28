@@ -14,6 +14,7 @@ import {
     SiSpringboot,
     SiPostgresql,
     SiPrisma,
+    SiMongodb,
     SiDocker,
     SiRedis,
     SiSocketdotio,
@@ -23,6 +24,22 @@ import {
 } from "react-icons/si";
 import { IconType } from "react-icons";
 import { ChevronRight } from "lucide-react";
+import { SectionHeader } from "@/components/SectionHeader";
+
+/** BullMQ has no Simple Icons entry — minimal queue icon using currentColor */
+const SiBullmq = (({ className }: { className?: string }) => (
+    <svg
+        role="img"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        className={className}
+        fill="currentColor"
+        aria-hidden="true"
+    >
+        <path d="M3 5h18v3H3V5zm0 6h12v3H3v-3zm0 6h16v3H3v-3z" />
+        <path d="M17 10h4v9h-4v-9z" opacity="0.55" />
+    </svg>
+)) as IconType;
 
 const domains = [
     {
@@ -57,6 +74,7 @@ const domains = [
             { name: "Express", icon: SiExpress },
             { name: "Spring Boot", icon: SiSpringboot },
             { name: "PostgreSQL", icon: SiPostgresql },
+            { name: "MongoDB", icon: SiMongodb },
             { name: "Prisma", icon: SiPrisma },
         ],
     },
@@ -67,6 +85,7 @@ const domains = [
         tools: [
             { name: "Docker", icon: SiDocker },
             { name: "Redis", icon: SiRedis },
+            { name: "BullMQ", icon: SiBullmq },
             { name: "Socket.io", icon: SiSocketdotio },
             { name: "Vercel", icon: SiVercel },
         ],
@@ -80,15 +99,12 @@ export function TechnicalDomains() {
             <div className="absolute top-0 right-0 w-1/3 h-full bg-linear-to-l from-primary/5 to-transparent -z-10" />
 
             <div className="container max-w-5xl mx-auto px-4">
-                <div className="mb-12 text-center md:text-left">
-                    <h2 className="text-3xl font-semibold mb-4">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground">Technical </span>
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Proficiency</span>
-                    </h2>
-                    <p className="text-muted-foreground text-lg">
-                        A comprehensive overview of the technologies I use to build scalable solutions.
-                    </p>
-                </div>
+                <SectionHeader
+                    number="03"
+                    tag="The Arsenal"
+                    title="TECH STACK"
+                    subtitle="A comprehensive overview of the technologies I use to build scalable solutions."
+                />
             </div>
 
             <div className="w-full">
