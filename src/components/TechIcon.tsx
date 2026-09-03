@@ -53,6 +53,7 @@ export const iconMap: Record<string, IconType> = {
     "GitHub": SiGithub,
     "Figma": SiFigma,
     "Nestjs": SiNestjs,
+    "NestJS": SiNestjs,
     "Express": SiExpress,
     "Java": SiOpenjdk,
     "Thymeleaf": SiThymeleaf,
@@ -61,8 +62,22 @@ export const iconMap: Record<string, IconType> = {
     "Resume": FileText as IconType,
 };
 
+const iconAliases: Record<string, string> = {
+    "REACT NATIVE": "React Native",
+    "NEXT.JS": "Next.js",
+    "TYPESCRIPT": "TypeScript",
+    "EXPO": "Expo",
+    "POSTGRESQL": "PostgreSQL",
+    "NESTJS": "NestJS",
+    "PRISMA": "Prisma",
+    "FIGMA": "Figma",
+    "EXPRESS": "Express",
+    "TAILWIND": "Tailwind CSS",
+};
+
 export function TechIcon({ name, className }: { name: string; className?: string }) {
-    const Icon = iconMap[name];
+    const resolved = iconAliases[name] ?? iconAliases[name.toUpperCase()] ?? name;
+    const Icon = iconMap[resolved];
     if (!Icon) return null;
     return <Icon className={className} />;
 }

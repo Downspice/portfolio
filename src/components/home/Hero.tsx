@@ -58,7 +58,7 @@ export function Hero() {
             transition={{ duration: 0.6 }}
             className="mb-8 md:mb-12"
           >
-            <span className="section-tag">Accra, Ghana · Available Now</span>
+            <span className="section-tag">Accra, Ghana</span>
           </motion.div>
 
           {/* Name + role — left half */}
@@ -121,7 +121,7 @@ export function Hero() {
       </section>
 
       {/* Skills marquee ticker */}
-      <Marquee items={SKILLS} speed="fast" />
+      <Marquee items={SKILLS} speed="fast" variant="chips" />
     </>
   );
 }

@@ -16,7 +16,7 @@ export function Footer() {
 
   return (
     <footer className="border-t-2 border-border mt-0">
-      <Marquee items={FOOTER_MARQUEE} className="border-t-0" />
+      <Marquee items={FOOTER_MARQUEE} variant="footer" className="border-t-0" />
 
       <div className="container max-w-7xl mx-auto px-4 md:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">

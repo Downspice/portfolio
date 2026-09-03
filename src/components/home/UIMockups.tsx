@@ -41,7 +41,7 @@ const mockups = [
         }
     },
     {
-        title: "TBMS",
+        title: "TBMS - Wireframes",
         subtitle: "Tyre & Battery Management",
         description: "An enterprise system for workshop managers to track construction equipment diagnostics and maintenance status.",
         stack: ["Figma"],
