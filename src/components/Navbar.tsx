@@ -47,7 +47,7 @@ export function Navbar() {
           <Link href="/" className="group flex items-center gap-2">
             <div className="relative w-9 h-9 rounded-full overflow-hidden border-2 border-border group-hover:border-primary transition-colors shrink-0">
               <Image
-                src="/JOSEPH.JPG"
+                src="/JOSEPH.png"
                 alt="Joseph Awer"
                 fill
                 className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300"

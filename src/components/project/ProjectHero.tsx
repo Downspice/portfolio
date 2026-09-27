@@ -42,7 +42,7 @@ export function ProjectHero({ project }: { project: CaseStudy }) {
                         <div className="flex flex-wrap items-center gap-x-8 gap-y-6 text-sm text-muted-foreground border-l-2 border-primary/20 pl-6">
                             <div className="flex items-center gap-3 pr-4">
                                 <div className="relative w-10 h-10 rounded-full overflow-hidden border border-white/10 shrink-0 shadow-sm">
-                                    <Image src="/JOSEPH.JPG" alt="Joseph Awer" fill className="object-cover" />
+                                    <Image src="/JOSEPH.png" alt="Joseph Awer" fill className="object-cover" />
                                 </div>
                                 <div>
                                     <span className="block font-medium text-foreground text-xs uppercase tracking-wide opacity-70">Lead Engineer</span>

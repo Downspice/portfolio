@@ -27,7 +27,7 @@ export function Footer() {
                 className="relative w-14 h-14 overflow-hidden border-2 border-primary shrink-0"
                 style={{ clipPath: "polygon(0 0, 100% 0, 100% 75%, 75% 100%, 0 100%)" }}
               >
-                <Image src="/JOSEPH.JPG" alt="Joseph Awer" fill className="object-cover grayscale" />
+                <Image src="/JOSEPH.png" alt="Joseph Awer" fill className="object-cover grayscale" />
               </div>
               <div>
                 <h3 className="font-display text-3xl tracking-wider text-foreground">JOSEPH AWER</h3>
