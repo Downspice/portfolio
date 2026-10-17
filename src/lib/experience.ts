@@ -10,10 +10,24 @@ export interface ExperienceItem {
 
 export const experiences: ExperienceItem[] = [
     {
+        id: "polymorphlabs",
+        title: "Software Engineer",
+        company: "Polymorphlabs",
+        period: "May 2026 – Present",
+        location: "Hybrid · Accra, Ghana",
+        focus: [
+            "Fixed bugs and improved core user flows across existing applications.",
+            "Introduced new engineering skills and modern techniques to increase code quality and developer experience.",
+            "Worked closely with project management and business development teams to refine functionality and optimize performance before deployment.",
+            "Actively participated in the conception and implementation of new features to maintain competitive advantage.",
+            "Assisted in the onboarding and technical enablement of new team members and clients."
+        ]
+    },
+    {
         id: "ceptra-nexgen",
         title: "Software Engineer",
         company: "Ceptra Nexgen Technologies",
-        period: "July 2025 – December 2025",
+        period: "July 2025 – March 2026",
         location: "Remote · Accra, Ghana",
         type: "Contract",
         focus: [
