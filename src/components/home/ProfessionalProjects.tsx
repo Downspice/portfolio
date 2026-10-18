@@ -10,16 +10,16 @@ import Image from "next/image";
 
 export function ProfessionalProjects() {
     return (
-        <section className="relative py-24 px-4 bg-background overflow-hidden border-b border-border/40">
+        <section className="relative py-16 md:py-24 px-4 bg-background overflow-hidden border-b border-border/40">
             <BackgroundOrbs />
             
             <div className="container max-w-6xl mx-auto relative z-10">
-                <div className="mb-20">
+                <div className="mb-14 md:mb-16">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
+                        transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
                     >
                         <SectionHeader
                             number="01"
@@ -34,19 +34,19 @@ export function ProfessionalProjects() {
                     {professionalProjects.map((project, index) => (
                         <motion.div
                             key={project.id}
-                            initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: index * 0.1, ease: "circOut" }}
+                            transition={{ duration: 0.4, delay: index * 0.05, ease: [0.23, 1, 0.32, 1] }}
                             className="group relative"
                         >
                             {/* Horizontal Card Layout */}
-                            <div className="relative overflow-hidden rounded-[2rem] bg-secondary/10 border border-border/40 backdrop-blur-md p-8 md:p-12 flex flex-col lg:flex-row gap-12 items-center hover:bg-secondary/15 transition-all duration-700">
+                            <div className="relative overflow-hidden rounded-[2rem] bg-secondary/10 border border-border/40 backdrop-blur-md p-8 md:p-12 flex flex-col lg:flex-row gap-8 lg:gap-12 items-center hover:bg-secondary/15 transition-[background-color,border-color,transform] duration-200 active:scale-[0.99]">
                                 
                                 {/* Decorative Icon/Visual Side */}
                                 <div className="w-full lg:w-1/3 flex-shrink-0 relative aspect-video lg:aspect-square rounded-2xl overflow-hidden bg-background/40 border border-white/5 flex items-center justify-center">
                                      <div 
-                                        className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-700"
+                                        className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300"
                                         style={{ 
                                             background: `radial-gradient(circle at center, ${project.color}, transparent 70%)` 
                                         }}
@@ -58,7 +58,7 @@ export function ProfessionalProjects() {
                                                 src={project.image}
                                                 alt={project.title}
                                                 fill
-                                                className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700 group-hover:scale-105 transition-transform duration-1000"
+                                                className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-300 group-hover:scale-105 transition-transform duration-500 ease-out"
                                              />
                                              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-60" />
                                          </div>

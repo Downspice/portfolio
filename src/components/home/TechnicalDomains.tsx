@@ -110,34 +110,24 @@ export function TechnicalDomains() {
             <div className="w-full">
                 <Tabs defaultValue="mobile" className="w-full flex flex-col items-center">
                     <div className="container max-w-5xl mx-auto px-4 w-full relative">
-                        {/* Scroll signal for mobile */}
-                        <div className="absolute right-4 top-1 bottom-9 w-12 bg-linear-to-l from-background to-transparent z-20 md:hidden pointer-events-none" />
-                        
-                        <motion.div 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: [0, 1, 0] }}
-                            transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
-                            className="absolute right-6 top-[28px] -translate-y-1/2 z-30 md:hidden text-primary pointer-events-none flex flex-col items-center gap-0.5"
-                        >
-                            <ChevronRight className="w-4 h-4" />
-                            <span className="text-[7px] font-bold uppercase tracking-widest whitespace-nowrap">Swipe</span>
-                        </motion.div>
+                        {/* Scroll signal edge fade for mobile without blinking loops */}
+                        <div className="absolute right-4 top-1 bottom-9 w-10 bg-linear-to-l from-background to-transparent z-20 md:hidden pointer-events-none" />
 
-                        <TabsList className="w-full justify-start h-auto p-1 bg-background/50 backdrop-blur-md rounded-xl mb-8 overflow-x-auto shadow-sm no-scrollbar relative">
+                        <TabsList className="w-full justify-start h-auto p-1.5 bg-background/50 backdrop-blur-md rounded-xl mb-8 overflow-x-auto shadow-xs no-scrollbar relative touch-pan-x">
                             <style jsx global>{`
                                 .no-scrollbar::-webkit-scrollbar {
                                     display: none;
                                 }
                                 .no-scrollbar {
-                                    -ms-overflow-style: none;  /* IE and Edge */
-                                    scrollbar-width: none;  /* Firefox */
+                                    -ms-overflow-style: none;
+                                    scrollbar-width: none;
                                 }
                             `}</style>
                             {domains.map((domain) => (
                                 <TabsTrigger
                                     key={domain.id}
                                     value={domain.id}
-                                    className="px-6 py-3 rounded-lg text-sm font-medium data-[state=active]:bg-primary/10 data-[state=active]:text-primary transition-all data-[state=active]:shadow-sm outline-hidden"
+                                    className="px-5 py-2.5 rounded-lg text-sm font-semibold select-none data-[state=active]:bg-primary/10 data-[state=active]:text-primary transition-[color,background-color,transform] duration-150 active:scale-[0.98] outline-hidden cursor-pointer"
                                 >
                                     {domain.label}
                                 </TabsTrigger>
@@ -149,13 +139,13 @@ export function TechnicalDomains() {
                         {domains.map((domain) => (
                             <TabsContent key={domain.id} value={domain.id} className="mt-0 w-full outline-hidden">
                                 <motion.div
-                                    initial={{ opacity: 0, scale: 0.98, y: 10 }}
+                                    initial={{ opacity: 0, scale: 0.99, y: 6 }}
                                     animate={{ opacity: 1, scale: 1, y: 0 }}
-                                    exit={{ opacity: 0, scale: 0.98, y: 10 }}
-                                    transition={{ duration: 0.4, ease: "circOut" }}
+                                    exit={{ opacity: 0, scale: 0.99, y: 6 }}
+                                    transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
                                     className="w-full"
                                 >
-                                    <div className="w-full glass-panel border-x-0 rounded-none py-12 md:py-16 bg-background/40 overflow-hidden relative">
+                                    <div className="w-full glass-panel border-x-0 rounded-none py-10 md:py-14 bg-background/40 overflow-hidden relative">
                                         <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-primary/5 blur-3xl rounded-full pointer-events-none" />
                                         
                                         <div className="container max-w-5xl mx-auto px-4 relative z-10">

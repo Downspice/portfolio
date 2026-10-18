@@ -47,7 +47,9 @@ export function ContactForm() {
                             id="name" 
                             name="name" 
                             required 
-                            className="w-full h-12 px-4 border-2 border-border bg-background focus:border-primary focus:outline-none transition-all duration-300"
+                            autoComplete="name"
+                            enterKeyHint="next"
+                            className="w-full h-12 px-4 text-base md:text-sm border-2 border-border bg-background focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/40 transition-[border-color,box-shadow] duration-150 ease-out"
                             placeholder="John Doe"
                         />
                     </div>
@@ -58,7 +60,12 @@ export function ContactForm() {
                             id="email" 
                             name="email" 
                             required 
-                            className="w-full h-12 px-4 border-2 border-border bg-background focus:border-primary focus:outline-none transition-all duration-300"
+                            autoComplete="email"
+                            inputMode="email"
+                            autoCapitalize="none"
+                            spellCheck={false}
+                            enterKeyHint="next"
+                            className="w-full h-12 px-4 text-base md:text-sm border-2 border-border bg-background focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/40 transition-[border-color,box-shadow] duration-150 ease-out"
                             placeholder="john@example.com"
                         />
                     </div>
@@ -70,7 +77,8 @@ export function ContactForm() {
                         name="message" 
                         required 
                         rows={6}
-                        className="w-full p-4 border-2 border-border bg-background focus:border-primary focus:outline-none transition-all duration-300 resize-none"
+                        enterKeyHint="done"
+                        className="w-full p-4 text-base md:text-sm border-2 border-border bg-background focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/40 transition-[border-color,box-shadow] duration-150 ease-out resize-none"
                         placeholder="Tell me about your project..."
                     />
                 </div>

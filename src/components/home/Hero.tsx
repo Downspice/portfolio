@@ -15,12 +15,12 @@ const SKILLS = [
 export function Hero() {
   return (
     <>
-      <section className="relative min-h-screen flex flex-col overflow-hidden isolate">
+      <section className="relative min-h-svh md:min-h-screen flex flex-col overflow-hidden isolate">
         {/* Right-half background photo */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           className="absolute inset-y-0 right-0 w-full sm:w-[60%] md:w-[55%] lg:w-1/2 z-0"
           aria-hidden="true"
         >
@@ -53,9 +53,9 @@ export function Hero() {
         <div className="flex-1 container max-w-7xl mx-auto px-4 md:px-8 pt-12 pb-8 flex flex-col justify-center relative z-10">
           {/* Top meta row */}
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
             className="mb-8 md:mb-12"
           >
             <span className="section-tag">Accra, Ghana</span>
@@ -63,9 +63,9 @@ export function Hero() {
 
           {/* Name + role — left half */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
             className="max-w-xl lg:max-w-2xl space-y-2"
           >
             <h1 className="font-display leading-[0.85]">
@@ -85,9 +85,9 @@ export function Hero() {
 
           {/* Bottom row — bio + CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.45, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
             className="mt-12 md:mt-16 max-w-xl lg:max-w-none lg:grid lg:grid-cols-2 lg:gap-8 items-end border-t-2 border-border pt-8"
           >
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-0">

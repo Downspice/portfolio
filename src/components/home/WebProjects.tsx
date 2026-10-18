@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ExternalLink, Globe, LayoutDashboard, X, Maximize2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -58,8 +58,28 @@ const projects = [
 export function WebProjects() {
     const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
+    // Escape key listener & body scroll lock
+    useEffect(() => {
+        if (!selectedProject) return;
+
+        const handleKeyDown = (e: globalThis.KeyboardEvent) => {
+            if (e.key === "Escape") {
+                setSelectedProject(null);
+            }
+        };
+
+        const origOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            document.body.style.overflow = origOverflow;
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [selectedProject]);
+
     return (
-        <section className="relative py-24 px-4 bg-background overflow-hidden">
+        <section className="relative py-16 md:py-24 px-4 bg-background overflow-hidden">
             <BackgroundOrbs />
             
             {/* Floating Tech Icons */}
@@ -188,16 +208,19 @@ export function WebProjects() {
                         onClick={() => setSelectedProject(null)}
                     >
                         <motion.div
-                            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                            role="dialog"
+                            aria-modal="true"
+                            initial={{ scale: 0.96, opacity: 0, y: 10 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
-                            exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            exit={{ scale: 0.97, opacity: 0, y: 6, transition: { duration: 0.14, ease: "easeIn" } }}
+                            transition={{ type: "spring", duration: 0.35, bounce: 0.12 }}
                             className="bg-background w-full max-w-5xl rounded-3xl overflow-hidden relative shadow-2xl overflow-y-auto max-h-[90vh]"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <button 
                                 onClick={() => setSelectedProject(null)}
-                                className="absolute top-4 right-4 z-10 p-2 bg-black/20 hover:bg-black/40 rounded-full text-white backdrop-blur-md transition-colors"
+                                aria-label="Close modal"
+                                className="absolute top-4 right-4 z-10 p-2 bg-black/20 hover:bg-black/40 active:scale-[0.92] rounded-full text-white backdrop-blur-md transition-[background-color,transform] duration-150"
                             >
                                 <X className="w-5 h-5" />
                             </button>

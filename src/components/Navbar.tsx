@@ -64,7 +64,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "relative px-4 py-2 font-mono-label text-[11px] uppercase tracking-[0.2em] transition-colors",
+                  "relative px-4 py-2 font-mono-label text-[11px] uppercase tracking-[0.2em] transition-colors duration-150 active:scale-[0.96] select-none",
                   pathname === link.href
                     ? "text-primary"
                     : "text-muted-foreground hover:text-foreground"
@@ -74,6 +74,7 @@ export function Navbar() {
                   <motion.span
                     layoutId="nav-underline"
                     className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary"
+                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
                   />
                 )}
                 <span className="text-muted-foreground/40 mr-1">{String(i + 1).padStart(2, "0")}</span>
@@ -84,9 +85,10 @@ export function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden p-2 border-2 border-border hover:border-primary transition-colors"
+            className="md:hidden p-2 border-2 border-border hover:border-primary active:scale-[0.92] select-none touch-manipulation transition-[border-color,transform] duration-150"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -99,6 +101,7 @@ export function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
               className="md:hidden border-t-2 border-border overflow-hidden"
             >
               <div className="py-4 flex flex-col">
@@ -107,7 +110,7 @@ export function Navbar() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      "flex items-center gap-4 px-4 py-4 border-b border-border/50 font-mono-label text-sm uppercase tracking-widest transition-colors",
+                      "flex items-center gap-4 px-4 py-4 border-b border-border/50 font-mono-label text-sm uppercase tracking-widest transition-colors duration-150 active:scale-[0.98]",
                       pathname === link.href
                         ? "text-primary bg-primary/5"
                         : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"

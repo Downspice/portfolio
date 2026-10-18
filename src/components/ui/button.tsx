@@ -5,21 +5,21 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-bold uppercase tracking-widest transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-bold uppercase tracking-widest select-none touch-manipulation transition-[color,background-color,border-color,box-shadow,transform] duration-150 ease-out active:scale-[0.97] active:shadow-none active:translate-x-0 active:translate-y-0 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
   {
     variants: {
       variant: {
         default:
           "bg-primary text-primary-foreground border-2 border-primary hover:bg-transparent hover:text-primary hover:shadow-[4px_4px_0_0_var(--primary)] hover:-translate-x-0.5 hover:-translate-y-0.5",
         destructive:
-          "bg-destructive text-white border-2 border-destructive hover:bg-transparent hover:text-destructive",
+          "bg-destructive text-white border-2 border-destructive hover:bg-transparent hover:text-destructive hover:shadow-[4px_4px_0_0_var(--destructive)] hover:-translate-x-0.5 hover:-translate-y-0.5",
         outline:
           "border-2 border-foreground/30 bg-transparent hover:border-primary hover:text-primary hover:shadow-[4px_4px_0_0_var(--primary)] hover:-translate-x-0.5 hover:-translate-y-0.5",
         secondary:
-          "bg-secondary text-secondary-foreground border-2 border-border hover:border-primary hover:text-primary",
+          "bg-secondary text-secondary-foreground border-2 border-border hover:border-primary hover:text-primary hover:shadow-[3px_3px_0_0_var(--primary)] hover:-translate-x-0.5 hover:-translate-y-0.5",
         ghost:
           "border-2 border-transparent hover:border-foreground/20 hover:bg-secondary/50",
-        link: "text-primary underline-offset-4 hover:underline border-0 normal-case tracking-normal font-medium",
+        link: "text-primary underline-offset-4 hover:underline border-0 normal-case tracking-normal font-medium active:scale-100",
       },
       size: {
         default: "h-10 px-5 py-2 has-[>svg]:px-4",

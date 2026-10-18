@@ -26,9 +26,12 @@ export default function ContactPage() {
             <div>
               <h3 className="font-display text-2xl tracking-wider mb-8">DETAILS</h3>
               <div className="space-y-6">
-                <a href="mailto:joseph.awer@gmail.com" className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 border-2 border-border flex items-center justify-center group-hover:border-primary transition-colors">
-                    <Mail className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <a 
+                  href="mailto:joseph.awer@gmail.com" 
+                  className="flex items-center gap-4 group active:scale-[0.98] transition-transform duration-100 touch-manipulation"
+                >
+                  <div className="w-12 h-12 border-2 border-border flex items-center justify-center group-hover:border-primary transition-colors duration-150">
+                    <Mail className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-150" />
                   </div>
                   <div>
                     <p className="font-mono-label text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Email</p>
@@ -36,9 +39,12 @@ export default function ContactPage() {
                   </div>
                 </a>
 
-                <a href="tel:+2330577210669" className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 border-2 border-border flex items-center justify-center group-hover:border-primary transition-colors">
-                    <Phone className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <a 
+                  href="tel:+2330577210669" 
+                  className="flex items-center gap-4 group active:scale-[0.98] transition-transform duration-100 touch-manipulation"
+                >
+                  <div className="w-12 h-12 border-2 border-border flex items-center justify-center group-hover:border-primary transition-colors duration-150">
+                    <Phone className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-150" />
                   </div>
                   <div>
                     <p className="font-mono-label text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Phone</p>
@@ -50,10 +56,10 @@ export default function ContactPage() {
                   href="https://wa.me/+233577210669"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 group"
+                  className="flex items-center gap-4 group active:scale-[0.98] transition-transform duration-100 touch-manipulation"
                 >
-                  <div className="w-12 h-12 border-2 border-border flex items-center justify-center group-hover:border-accent transition-colors">
-                    <MessageSquare className="w-5 h-5 text-muted-foreground group-hover:text-accent transition-colors" />
+                  <div className="w-12 h-12 border-2 border-border flex items-center justify-center group-hover:border-accent transition-colors duration-150">
+                    <MessageSquare className="w-5 h-5 text-muted-foreground group-hover:text-accent transition-colors duration-150" />
                   </div>
                   <div>
                     <p className="font-mono-label text-[10px] uppercase tracking-widest text-muted-foreground mb-1">WhatsApp</p>
@@ -70,9 +76,10 @@ export default function ContactPage() {
                   href="https://github.com/Downspice"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group p-3 border-2 border-border hover:border-primary hover:shadow-[3px_3px_0_0_var(--primary)] transition-all"
+                  aria-label="GitHub profile"
+                  className="group p-3 border-2 border-border hover:border-primary hover:shadow-[3px_3px_0_0_var(--primary)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:scale-[0.95] active:shadow-none transition-[border-color,box-shadow,transform] duration-150 ease-out select-none touch-manipulation"
                 >
-                  <TechIcon name="GitHub" className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <TechIcon name="GitHub" className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-150" />
                 </a>
               </div>
             </div>

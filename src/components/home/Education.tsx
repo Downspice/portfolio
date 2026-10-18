@@ -17,10 +17,10 @@ export function Education() {
                 <div className="flex flex-col md:flex-row items-start justify-between gap-12 lg:gap-24">
                     {/* Left Side: Header */}
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
                         className="md:w-1/3"
                     >
                         <SectionHeader
@@ -36,21 +36,21 @@ export function Education() {
                         {education.map((item, index) => (
                             <motion.div
                                 key={item.id}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 12 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                transition={{ duration: 0.25, delay: index * 0.05, ease: [0.23, 1, 0.32, 1] }}
                                 className="relative pl-12 group"
                             >
                                 {/* Timeline Node */}
-                                <div className="absolute left-0 top-1.5 w-[24px] h-[24px] rounded-full bg-background border-2 border-primary flex items-center justify-center z-10 group-hover:scale-110 transition-transform duration-300">
+                                <div className="absolute left-0 top-1.5 w-[24px] h-[24px] rounded-full bg-background border-2 border-primary flex items-center justify-center z-10 group-hover:scale-105 transition-transform duration-200 ease-out">
                                     <div className="w-2 h-2 rounded-full bg-primary" />
                                 </div>
 
-                                <div className="space-y-4 p-8 rounded-3xl bg-background/40 border border-border/50 hover:border-primary/20 backdrop-blur-sm transition-all duration-500 shadow-sm hover:shadow-lg">
+                                <div className="space-y-4 p-8 rounded-3xl bg-background/40 border border-border/50 hover:border-primary/30 backdrop-blur-sm transition-[border-color,background-color,box-shadow,transform] duration-200 ease-out shadow-xs hover:shadow-md active:scale-[0.99] touch-manipulation">
                                     <div className="space-y-1">
                                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
-                                            <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                                            <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-150">
                                                 {item.degree}
                                             </h3>
                                             <div className="flex items-center gap-2 text-xs font-semibold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 w-fit">
@@ -65,7 +65,7 @@ export function Education() {
                                     </div>
 
                                     {/* Hover flare */}
-                                    <div className="absolute -inset-px border-2 border-transparent group-hover:border-primary/10 rounded-3xl pointer-events-none transition-colors duration-500" />
+                                    <div className="absolute -inset-px border-2 border-transparent group-hover:border-primary/10 rounded-3xl pointer-events-none transition-colors duration-300" />
                                 </div>
                             </motion.div>
                         ))}

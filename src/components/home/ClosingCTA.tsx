@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function ClosingCTA() {
   return (
-    <section className="relative py-32 md:py-40 px-4 md:px-8 overflow-hidden">
+    <section className="relative py-20 md:py-28 px-4 md:px-8 overflow-hidden">
       {/* Background accent */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px]" />
@@ -14,10 +14,10 @@ export function ClosingCTA() {
 
       <div className="container max-w-5xl mx-auto text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
         >
           <span className="section-tag block mb-6">Let&apos;s Build</span>
           <h2 className="font-display text-5xl md:text-7xl lg:text-8xl tracking-wider leading-[0.9] glitch-text" data-text="LET'S WORK">

@@ -48,18 +48,18 @@ export function Footer() {
             <div className="flex flex-col gap-4">
               <a
                 href="mailto:joseph.awer@gmail.com"
-                className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
+                className="flex items-center gap-3 text-muted-foreground hover:text-primary active:scale-[0.98] transition-[color,transform] duration-150 group touch-manipulation"
               >
-                <div className="p-2 border border-border group-hover:border-primary transition-colors">
+                <div className="p-2 border border-border group-hover:border-primary transition-colors duration-150">
                   <Mail className="w-4 h-4" />
                 </div>
                 <span className="font-mono-label text-xs">joseph.awer@gmail.com</span>
               </a>
               <a
                 href="tel:+2330577210669"
-                className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
+                className="flex items-center gap-3 text-muted-foreground hover:text-primary active:scale-[0.98] transition-[color,transform] duration-150 group touch-manipulation"
               >
-                <div className="p-2 border border-border group-hover:border-primary transition-colors">
+                <div className="p-2 border border-border group-hover:border-primary transition-colors duration-150">
                   <Phone className="w-4 h-4" />
                 </div>
                 <span className="font-mono-label text-xs">+233 057 721 0669</span>
@@ -68,9 +68,9 @@ export function Footer() {
                 href="https://wa.me/+233577210669"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-muted-foreground hover:text-accent transition-colors group"
+                className="flex items-center gap-3 text-muted-foreground hover:text-accent active:scale-[0.98] transition-[color,transform] duration-150 group touch-manipulation"
               >
-                <div className="p-2 border border-border group-hover:border-accent transition-colors">
+                <div className="p-2 border border-border group-hover:border-accent transition-colors duration-150">
                   <MessageSquare className="w-4 h-4" />
                 </div>
                 <span className="font-mono-label text-xs">WhatsApp</span>
@@ -86,25 +86,25 @@ export function Footer() {
                 href="https://github.com/Downspice"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-3 border-2 border-border hover:border-primary hover:shadow-[3px_3px_0_0_var(--primary)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                className="group p-3 border-2 border-border hover:border-primary hover:shadow-[3px_3px_0_0_var(--primary)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:scale-[0.95] active:shadow-none transition-[border-color,box-shadow,transform] duration-150 ease-out select-none touch-manipulation"
               >
-                <TechIcon name="GitHub" className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <TechIcon name="GitHub" className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-150" />
                 <span className="sr-only">GitHub</span>
               </a>
               <a
                 href="https://docs.google.com/document/d/1Kgei3zUYT3TPkn7CJem7U83X3vwnlyKEV_Y4eM_2anE/edit?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-3 border-2 border-border hover:border-primary hover:shadow-[3px_3px_0_0_var(--primary)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                className="group p-3 border-2 border-border hover:border-primary hover:shadow-[3px_3px_0_0_var(--primary)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:scale-[0.95] active:shadow-none transition-[border-color,box-shadow,transform] duration-150 ease-out select-none touch-manipulation"
               >
-                <TechIcon name="Resume" className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <TechIcon name="Resume" className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-150" />
                 <span className="sr-only">Resume</span>
               </a>
               <Link
                 href="/contact"
-                className="group p-3 border-2 border-primary bg-primary/10 hover:bg-primary hover:shadow-[3px_3px_0_0_var(--primary)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                className="group p-3 border-2 border-primary bg-primary/10 hover:bg-primary hover:shadow-[3px_3px_0_0_var(--primary)] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:scale-[0.95] active:shadow-none transition-[border-color,background-color,box-shadow,transform] duration-150 ease-out select-none touch-manipulation"
               >
-                <Mail className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
+                <Mail className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors duration-150" />
                 <span className="sr-only">Contact</span>
               </Link>
             </div>

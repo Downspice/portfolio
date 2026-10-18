@@ -32,7 +32,7 @@ const PRINCIPLES = [
 
 export function Mindset() {
   return (
-    <section className="relative py-24 md:py-32 border-y-2 border-border">
+    <section className="relative py-16 md:py-24 border-y-2 border-border">
       <div className="container max-w-7xl mx-auto px-4 md:px-8">
         <SectionHeader
           number="04"
@@ -41,18 +41,18 @@ export function Mindset() {
           subtitle="Four principles that guide every line of code and every design decision."
         />
 
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-0 border-2 border-border">
+        <div className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 gap-0 border-2 border-border">
           {PRINCIPLES.map((p, i) => (
             <motion.div
               key={p.num}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group p-8 md:p-10 border-b-2 sm:border-r-2 border-border last:border-b-0 sm:[&:nth-child(2)]:border-r-0 sm:[&:nth-child(4)]:border-r-0 sm:[&:nth-child(3)]:border-b-0 sm:[&:nth-child(4)]:border-b-0 hover:bg-secondary/20 transition-colors"
+              transition={{ duration: 0.35, delay: i * 0.04, ease: [0.23, 1, 0.32, 1] }}
+              className="group p-8 md:p-10 border-b-2 sm:border-r-2 border-border last:border-b-0 sm:[&:nth-child(2)]:border-r-0 sm:[&:nth-child(4)]:border-r-0 sm:[&:nth-child(3)]:border-b-0 sm:[&:nth-child(4)]:border-b-0 hover:bg-secondary/20 transition-colors duration-150 select-none active:scale-[0.99]"
             >
               <span className={`font-mono-label text-xs ${p.color} tracking-[0.3em]`}>{p.num}</span>
-              <h3 className="font-display text-2xl md:text-3xl tracking-wider mt-3 mb-4 group-hover:text-primary transition-colors">
+              <h3 className="font-display text-2xl md:text-3xl tracking-wider mt-3 mb-4 group-hover:text-primary transition-colors duration-150">
                 {p.title}
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-0">{p.desc}</p>
@@ -63,11 +63,11 @@ export function Mindset() {
 
       {/* Currently building — full bleed banner */}
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mt-24 border-t-2 border-border bg-secondary/20"
+        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+        className="mt-16 md:mt-20 border-t-2 border-border bg-secondary/20"
       >
         <div className="container max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-20">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">

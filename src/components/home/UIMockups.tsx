@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useMotionValue } from "framer-motion";
 import { ExternalLink, X, Maximize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TechIcon } from "@/components/TechIcon";
 import { BackgroundOrbs } from "@/components/BackgroundOrbs";
+import { SectionHeader } from "@/components/SectionHeader";
 import Image from "next/image";
 
 const mockups = [
@@ -60,8 +61,28 @@ const mockups = [
 export function UIMockups() {
     const [selectedMockup, setSelectedMockup] = useState<typeof mockups[0] | null>(null);
 
+    // Escape listener and scroll lock
+    useEffect(() => {
+        if (!selectedMockup) return;
+
+        const handleKeyDown = (e: globalThis.KeyboardEvent) => {
+            if (e.key === "Escape") {
+                setSelectedMockup(null);
+            }
+        };
+
+        const origOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            document.body.style.overflow = origOverflow;
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [selectedMockup]);
+
     return (
-        <section className="relative py-24 px-4 bg-muted/30 overflow-hidden">
+        <section className="relative py-16 md:py-24 px-4 bg-muted/20 overflow-hidden">
             <BackgroundOrbs />
             
             {/* Floating decorative icons */}
@@ -83,28 +104,31 @@ export function UIMockups() {
             </div>
 
             <div className="container max-w-6xl mx-auto relative z-10">
-                <div className="mb-16 text-center md:text-left">
+                <div className="mb-14 md:mb-16">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
                     >
-                        <h3 className="text-primary font-medium mb-2 uppercase tracking-widest text-sm">Want to see what I've done?</h3>
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">My UI Mockups</h2>
-                        <div className="h-1.5 w-20 bg-primary/20 rounded-full mx-auto md:mx-0" />
+                        <SectionHeader
+                            number="03"
+                            tag="Design Systems"
+                            title="UI MOCKUPS"
+                            subtitle="High-fidelity interactive interfaces, design systems, and rapid product prototypes built in Figma."
+                        />
                     </motion.div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     {mockups.map((mockup, index) => (
                         <CardTilt key={mockup.title}>
                             <motion.div
-                                initial={{ opacity: 0, y: 30 }}
+                                initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className="group relative flex flex-col h-full bg-background rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-border/50"
+                                transition={{ duration: 0.35, delay: index * 0.05, ease: [0.23, 1, 0.32, 1] }}
+                                className="group relative flex flex-col h-full bg-background rounded-3xl overflow-hidden shadow-xs hover:shadow-xl transition-[border-color,box-shadow,transform] duration-200 active:scale-[0.99] border border-border/60"
                             >
                                 {/* Project Image Container */}
                                 <div 
@@ -188,16 +212,19 @@ export function UIMockups() {
                         onClick={() => setSelectedMockup(null)}
                     >
                         <motion.div
-                            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                            role="dialog"
+                            aria-modal="true"
+                            initial={{ scale: 0.96, opacity: 0, y: 10 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
-                            exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                            exit={{ scale: 0.97, opacity: 0, y: 6, transition: { duration: 0.14, ease: "easeIn" } }}
+                            transition={{ type: "spring", duration: 0.35, bounce: 0.12 }}
                             className="bg-background w-full max-w-5xl rounded-3xl overflow-hidden relative shadow-2xl overflow-y-auto max-h-[90vh]"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <button 
                                 onClick={() => setSelectedMockup(null)}
-                                className="absolute top-4 right-4 z-10 p-2 bg-black/20 hover:bg-black/40 rounded-full text-white backdrop-blur-md transition-colors"
+                                aria-label="Close modal"
+                                className="absolute top-4 right-4 z-10 p-2 bg-black/20 hover:bg-black/40 active:scale-[0.92] rounded-full text-white backdrop-blur-md transition-[background-color,transform] duration-150"
                             >
                                 <X className="w-5 h-5" />
                             </button>

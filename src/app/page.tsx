@@ -53,24 +53,24 @@ export default function Home() {
               <Link
                 key={section.href}
                 href={section.href}
-                className="group relative p-8 md:p-10 border-b-2 md:border-b-0 md:border-r-2 border-border last:border-r-0 last:border-b-0 hover:bg-secondary/30 transition-all duration-300 min-h-[280px] flex flex-col justify-between"
+                className="group relative p-8 md:p-10 border-b-2 md:border-b-0 md:border-r-2 border-border last:border-r-0 last:border-b-0 hover:bg-secondary/30 transition-[background-color,border-color,transform] duration-150 ease-out active:scale-[0.99] select-none min-h-[280px] flex flex-col justify-between"
               >
                 <div>
                   <span className="font-mono-label text-xs text-muted-foreground/50">{section.num}</span>
                   <span className="section-tag block mt-2 mb-4">{section.tag}</span>
-                  <h3 className="font-display text-4xl md:text-5xl tracking-wider group-hover:text-primary transition-colors">
+                  <h3 className="font-display text-4xl md:text-5xl tracking-wider group-hover:text-primary transition-colors duration-150">
                     {section.title}
                   </h3>
                   <p className="mt-4 text-sm text-muted-foreground leading-relaxed mb-0">
                     {section.desc}
                   </p>
                 </div>
-                <div className="flex items-center gap-2 mt-8 font-mono-label text-xs uppercase tracking-widest text-muted-foreground group-hover:text-primary transition-colors">
+                <div className="flex items-center gap-2 mt-8 font-mono-label text-xs uppercase tracking-widest text-muted-foreground group-hover:text-primary transition-colors duration-150">
                   Enter
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />
                 </div>
                 {/* Hover accent line */}
-                <div className="absolute bottom-0 left-0 h-1 w-0 group-hover:w-full bg-primary transition-all duration-500" />
+                <div className="absolute bottom-0 left-0 h-1 w-0 group-hover:w-full bg-primary transition-[width] duration-300 ease-out" />
               </Link>
             ))}
           </div>
