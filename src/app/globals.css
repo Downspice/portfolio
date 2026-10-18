@@ -99,11 +99,29 @@
   --sidebar-accent-foreground: oklch(0.97 0.01 90);
   --sidebar-border: oklch(0.22 0 0);
   --sidebar-ring: oklch(0.88 0.18 95);
+
+  /* Emil Kowalski custom easing curves */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 @layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   * {
     @apply border-border outline-ring/50;
+  }
+
+  button, a, [role="button"], .tappable {
+    touch-action: manipulation;
+  }
+
+  button, [role="button"], .tab, .chip {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
   }
 
   body {
