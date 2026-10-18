@@ -27,9 +27,9 @@ export default function StairTransition({ children }: { children: React.ReactNod
         initial={{ x: "0%" }}
         animate={{ x: "-100%" }}
         transition={{
-          duration: 0.32,
+          duration: 0.65,
           ease: [0.76, 0, 0.24, 1],
-          delay: 0.02,
+          delay: 0.04,
         }}
       >
         {/* Gold leading edge */}
@@ -42,8 +42,8 @@ export default function StairTransition({ children }: { children: React.ReactNod
           <motion.span
             className="font-display text-[18vw] md:text-[14vw] leading-none text-foreground/[0.04] select-none tracking-wider whitespace-nowrap"
             initial={{ opacity: 1, x: 0 }}
-            animate={{ opacity: 0, x: -30 }}
-            transition={{ duration: 0.28, ease: "easeOut" }}
+            animate={{ opacity: 0, x: -35 }}
+            transition={{ duration: 0.48, ease: "easeOut" }}
           >
             {routeLabel}
           </motion.span>
@@ -69,9 +69,9 @@ export default function StairTransition({ children }: { children: React.ReactNod
       {/* Page content enters with smooth settle */}
       <motion.div
         key={`content-${pathname}`}
-        initial={{ opacity: 0, y: 8 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.25, delay: 0.12, ease: [0.23, 1, 0.32, 1] }}
+        transition={{ duration: 0.38, delay: 0.22, ease: [0.23, 1, 0.32, 1] }}
         className="w-full h-full"
       >
         {children}
