@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowRight, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Experience | Prince Spice",
+    title: "Experience",
     description: "Professional software engineering history, roles, technical leadership, and engineering competencies.",
 };
 
