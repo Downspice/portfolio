@@ -37,7 +37,7 @@ const projects = [
         description: "An internal HR tool for attendance tracking, salary generation, and detailed reporting statistics for administrative teams.",
         stack: ["Next.js", "React", "PostgreSQL"],
         image: "/employee-management.png",
-        link: "https://employee-management-jamila.vercel.app/",
+        link: "https://awer-hr-system-test.vercel.app/",
         colors: {
             accent: "#0d9488", // Teal
         }
