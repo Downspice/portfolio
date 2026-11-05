@@ -23,9 +23,18 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://josephawer.com"),
   title: "Joseph Awer | Software Developer",
   description: "Portfolio of Joseph Awer, a Software Developer specializing in Mobile (Expo) and Full-Stack Web Systems (Next.js, Python).",
   keywords: ["Joseph Awer", "Software Developer", "Mobile Developer", "Full Stack", "Expo", "Next.js", "React Native", "Ghana", "Portfolio"],
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
     title: "Joseph Awer | Software Developer",
     description: "Building performant, scalable applications with Expo, Next.js, and Python.",
@@ -33,11 +42,20 @@ export const metadata: Metadata = {
     siteName: "Joseph Awer Portfolio",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Joseph Awer | Software Developer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Joseph Awer | Software Developer",
     description: "Mobile & Full-Stack Systems Specialist.",
+    images: ["/opengraph-image.png"],
   },
 };
 
