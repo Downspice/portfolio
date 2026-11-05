@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Joseph Awer | Software Developer",
     description: "Building performant, scalable applications with Expo, Next.js, and Python.",
-    url: "https://josephawer.com",
+    url: "https://awer-joseph-kweku.vercel.app/",
     siteName: "Joseph Awer Portfolio",
     locale: "en_US",
     type: "website",
