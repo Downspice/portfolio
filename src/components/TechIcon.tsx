@@ -26,8 +26,14 @@ import {
     SiThymeleaf,
     SiKeycloak,
     SiShadcnui,
+    SiFlutter,
+    SiDart,
+    SiGraphql,
+    SiMongodb,
+    SiVite,
+    SiSqlite,
 } from "react-icons/si";
-import { FileText, LayoutDashboard } from "lucide-react";
+import { FileText } from "lucide-react";
 import { IconType } from "react-icons";
 
 export const iconMap: Record<string, IconType> = {
@@ -59,6 +65,12 @@ export const iconMap: Record<string, IconType> = {
     "Thymeleaf": SiThymeleaf,
     "Keycloak": SiKeycloak,
     "shadcn": SiShadcnui,
+    "Flutter": SiFlutter,
+    "Dart": SiDart,
+    "GraphQL": SiGraphql,
+    "MongoDB": SiMongodb,
+    "Vite": SiVite,
+    "SQLite": SiSqlite,
     "Resume": FileText as IconType,
 };
 
@@ -73,6 +85,12 @@ const iconAliases: Record<string, string> = {
     "FIGMA": "Figma",
     "EXPRESS": "Express",
     "TAILWIND": "Tailwind CSS",
+    "FLUTTER": "Flutter",
+    "DART": "Dart",
+    "GRAPHQL": "GraphQL",
+    "MONGODB": "MongoDB",
+    "VITE": "Vite",
+    "SQLITE": "SQLite",
 };
 
 export function TechIcon({ name, className }: { name: string; className?: string }) {
