@@ -62,30 +62,6 @@ const projects: ProjectItem[] = [
             accent: "#8b5cf6", // Purple
         }
     },
-    {
-        title: "Ventos Backend",
-        subtitle: "Distributed Commerce Engine",
-        description: "Mission-critical commerce backend powering the Ventos ecosystem. Engineered with Apollo Server GraphQL and Express on Node.js, featuring MongoDB persistence, bidirectional client sync mesh, real-time WebSocket event feeds, and role-based auth middleware.",
-        stack: ["Node.js", "Express", "TypeScript", "GraphQL", "MongoDB"],
-        image: "/ventos-backend.png",
-        link: "https://github.com/Downspice/ventos-backend",
-        category: "Ventos Suite",
-        colors: {
-            accent: "#10b981", // Emerald
-        }
-    },
-    {
-        title: "Ventos Info",
-        subtitle: "Product Architecture Showcase",
-        description: "High-converting editorial showcase for Ventos — modern retail's local-first operating system. Built with the Adalat AI visual design language, featuring interactive simulated POS terminal previews, latency telemetry, and deep-dive architecture specs.",
-        stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Framer Motion"],
-        image: "/ventos-info.png",
-        link: "https://github.com/Downspice/ventos-platform",
-        category: "Ventos Suite",
-        colors: {
-            accent: "#eab308", // Amber Gold
-        }
-    },
     // Independent Personal Projects
     {
         title: "Awer Ticketing",
