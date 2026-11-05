@@ -47,7 +47,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "Joseph Awer | Software Developer",
+        alt: "Joseph Kweku Awer | Software Developer",
       },
     ],
   },
