@@ -26,7 +26,7 @@ export function Hero() {
         >
           <div className="relative w-full h-full">
             <Image
-              src="/JOSEPH.png"
+              src="/joseph.png"
               alt=""
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
