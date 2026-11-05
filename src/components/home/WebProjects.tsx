@@ -14,7 +14,9 @@ interface ProjectItem {
     description: string;
     stack: string[];
     image: string;
-    link: string;
+    link?: string;
+    github?: string;
+    live?: string;
     category: "Ventos Suite" | "Personal Web Projects";
     colors: {
         accent: string;
@@ -32,7 +34,7 @@ const projects: ProjectItem[] = [
         description: "High-performance native desktop point-of-sale client built with Flutter for macOS, Windows, and Linux. Delivers sub-millisecond barcode scanning, universal ESC/POS thermal printing, automatic cash drawer triggers, split payments, and staff PIN fast-switching with offline-first local SQLite and cloud GraphQL sync.",
         stack: ["Flutter", "Dart", "GraphQL", "SQLite"],
         image: "/ventos-pos.png",
-        link: "https://github.com/Downspice/ventos-platform",
+        github: "https://github.com/Downspice/ventos-platform",
         category: "Ventos Suite",
         colors: {
             accent: "#fdb72e", // Ventos Saffron Gold
@@ -44,7 +46,8 @@ const projects: ProjectItem[] = [
         description: "Modern browser-based retail terminal and store operations hub. Features cashier checkout, appointment & service bookings, real-time multi-store inventory variants, customer credit ledgers, returns, and automatic synchronization with the distributed commerce mesh.",
         stack: ["React", "TypeScript", "Vite", "GraphQL", "Tailwind CSS"],
         image: "/ventos-web.png",
-        link: "https://github.com/Downspice/ventos-web",
+        live: "https://ventos-web-six.vercel.app/",
+        github: "https://github.com/Downspice/ventos-web",
         category: "Ventos Suite",
         colors: {
             accent: "#3b82f6", // Blue
@@ -56,7 +59,8 @@ const projects: ProjectItem[] = [
         description: "Enterprise control plane for multi-location retail operators. Provides cash drawer blind audits, shift commission splits, role-based permission tiers (RBAC), multi-register setups, financial P&L reporting, and real-time store velocity telemetry.",
         stack: ["React", "TypeScript", "Vite", "GraphQL", "Tailwind CSS"],
         image: "/ventos-admin.png",
-        link: "https://github.com/Downspice/ventos-admin",
+        live: "https://ventos-admin.vercel.app/",
+        github: "https://github.com/Downspice/ventos-admin",
         category: "Ventos Suite",
         colors: {
             accent: "#8b5cf6", // Purple
@@ -69,7 +73,8 @@ const projects: ProjectItem[] = [
         description: "A comprehensive ticketing platform featuring drag-and-drop task management, seamless issue submission, and efficient team categorization.",
         stack: ["Next.js", "React", "PostgreSQL"],
         image: "/awer-ticketing.png",
-        link: "https://awer-ticketing.vercel.app/",
+        live: "https://awer-ticketing.vercel.app/",
+        github: "https://github.com/Downspice/awer-ticketing",
         category: "Personal Web Projects",
         colors: {
             accent: "#3b82f6", // Blue
@@ -81,7 +86,8 @@ const projects: ProjectItem[] = [
         description: "A secure voting application with real-time election tracking and analytics powered by WebSockets for instant data synchronization.",
         stack: ["Next.js", "React", "PostgreSQL"],
         image: "/awer-votes.png",
-        link: "https://awer-votes.vercel.app/",
+        live: "https://awer-votes.vercel.app/",
+        github: "https://github.com/Downspice/awer-votes",
         category: "Personal Web Projects",
         colors: {
             accent: "#6366f1", // Indigo
@@ -93,7 +99,8 @@ const projects: ProjectItem[] = [
         description: "An internal HR tool for attendance tracking, salary generation, and detailed reporting statistics for administrative teams.",
         stack: ["Next.js", "React", "PostgreSQL"],
         image: "/employee-management.png",
-        link: "https://awer-hr-system-test.vercel.app/",
+        live: "https://awer-hr-system-test.vercel.app/",
+        github: "https://github.com/Downspice/employee-management",
         category: "Personal Web Projects",
         colors: {
             accent: "#0d9488", // Teal
@@ -105,13 +112,20 @@ const projects: ProjectItem[] = [
         description: "A fully customizable travel management system for SHS students to book trips and for parents to book visits to their wards securely. \n\nNote: To see the admin side, go to https://trip-web-indol-nu.vercel.app/admin with contact me for the login details",
         stack: ["Next.js", "NestJS", "React", "PostgreSQL", "Prisma"],
         image: "/trip-management.png",
-        link: "https://trip-web-indol-nu.vercel.app/",
+        live: "https://trip-web-indol-nu.vercel.app/",
+        github: "https://github.com/Downspice/trip-web",
         category: "Personal Web Projects",
         colors: {
             accent: "#8b5cf6", // Violet
         }
     }
 ];
+
+function getProjectLinks(project: ProjectItem) {
+    const live = project.live || (project.link && !project.link.includes("github.com") ? project.link : undefined);
+    const github = project.github || (project.link && project.link.includes("github.com") ? project.link : undefined);
+    return { live, github };
+}
 
 export function WebProjects() {
     const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
@@ -276,20 +290,52 @@ export function WebProjects() {
                                             </p>
 
                                             <div className="flex flex-col gap-3 mt-auto">
-                                                <Button 
-                                                    asChild
-                                                    className="w-full rounded-2xl gap-2 font-semibold shadow-md hover:shadow-lg transition-all duration-300"
-                                                    style={{ backgroundColor: project.colors.accent }}
-                                                    onClick={(e) => e.stopPropagation()}
-                                                >
-                                                    <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                                        {project.link.includes("github.com") ? (
-                                                            <>View on GitHub <Github className="w-4 h-4" /></>
-                                                        ) : (
-                                                            <>Visit Live Site <Globe className="w-4 h-4" /></>
-                                                        )}
-                                                    </a>
-                                                </Button>
+                                                {(() => {
+                                                    const { live, github } = getProjectLinks(project);
+                                                    if (live && github) {
+                                                        return (
+                                                            <div className="grid grid-cols-2 gap-2" onClick={(e) => e.stopPropagation()}>
+                                                                <Button 
+                                                                    asChild
+                                                                    size="sm"
+                                                                    className="w-full rounded-xl gap-1.5 font-semibold shadow-sm hover:shadow-md transition-all duration-200 text-xs sm:text-sm text-black"
+                                                                    style={{ backgroundColor: project.colors.accent }}
+                                                                >
+                                                                    <a href={live} target="_blank" rel="noopener noreferrer">
+                                                                        Live Site <Globe className="w-3.5 h-3.5" />
+                                                                    </a>
+                                                                </Button>
+                                                                <Button 
+                                                                    asChild
+                                                                    size="sm"
+                                                                    variant="outline"
+                                                                    className="w-full rounded-xl gap-1.5 font-semibold text-xs sm:text-sm border-border/80 bg-secondary/30 hover:bg-secondary/70 text-foreground transition-all duration-200"
+                                                                >
+                                                                    <a href={github} target="_blank" rel="noopener noreferrer">
+                                                                        GitHub <Github className="w-3.5 h-3.5" />
+                                                                    </a>
+                                                                </Button>
+                                                            </div>
+                                                        );
+                                                    }
+                                                    const activeLink = live || github;
+                                                    return (
+                                                        <Button 
+                                                            asChild
+                                                            className="w-full rounded-2xl gap-2 font-semibold shadow-md hover:shadow-lg transition-all duration-300 text-black"
+                                                            style={{ backgroundColor: project.colors.accent }}
+                                                            onClick={(e) => e.stopPropagation()}
+                                                        >
+                                                            <a href={activeLink} target="_blank" rel="noopener noreferrer">
+                                                                {live ? (
+                                                                    <>Visit Live Site <Globe className="w-4 h-4" /></>
+                                                                ) : (
+                                                                    <>View on GitHub <Github className="w-4 h-4" /></>
+                                                                )}
+                                                            </a>
+                                                        </Button>
+                                                    );
+                                                })()}
                                                 <div className="flex items-center gap-2 justify-center text-[10px] font-bold uppercase tracking-widest text-muted-foreground/50">
                                                     <LayoutDashboard className="w-3 h-3" />
                                                     <span>{project.stack.slice(0, 2).join(" + ")}</span>
@@ -379,18 +425,46 @@ export function WebProjects() {
                                     </div>
 
                                     <div className="flex flex-col gap-3 mt-auto">
-                                        <Button 
-                                            size="lg"
-                                            className="w-full rounded-2xl gap-3 shadow-lg hover:shadow-xl transition-all duration-300 font-semibold"
-                                            style={{ backgroundColor: selectedProject.colors.accent }}
-                                            onClick={() => window.open(selectedProject.link, '_blank')}
-                                        >
-                                            {selectedProject.link.includes("github.com") ? (
-                                                <>View on GitHub <Github className="w-4 h-4" /></>
-                                            ) : (
-                                                <>Visit Live Site <ExternalLink className="w-4 h-4" /></>
-                                            )}
-                                        </Button>
+                                        {(() => {
+                                            const { live, github } = getProjectLinks(selectedProject);
+                                            if (live && github) {
+                                                return (
+                                                    <div className="flex flex-col sm:flex-row gap-3">
+                                                        <Button 
+                                                            size="lg"
+                                                            className="flex-1 rounded-2xl gap-2 shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-black"
+                                                            style={{ backgroundColor: selectedProject.colors.accent }}
+                                                            onClick={() => window.open(live, '_blank')}
+                                                        >
+                                                            Visit Live Site <ExternalLink className="w-4 h-4" />
+                                                        </Button>
+                                                        <Button 
+                                                            size="lg"
+                                                            variant="outline"
+                                                            className="flex-1 rounded-2xl gap-2 border-border/80 bg-secondary/40 hover:bg-secondary text-foreground font-semibold"
+                                                            onClick={() => window.open(github, '_blank')}
+                                                        >
+                                                            View on GitHub <Github className="w-4 h-4" />
+                                                        </Button>
+                                                    </div>
+                                                );
+                                            }
+                                            const activeLink = live || github;
+                                            return (
+                                                <Button 
+                                                    size="lg"
+                                                    className="w-full rounded-2xl gap-3 shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-black"
+                                                    style={{ backgroundColor: selectedProject.colors.accent }}
+                                                    onClick={() => window.open(activeLink, '_blank')}
+                                                >
+                                                    {live ? (
+                                                        <>Visit Live Site <ExternalLink className="w-4 h-4" /></>
+                                                    ) : (
+                                                        <>View on GitHub <Github className="w-4 h-4" /></>
+                                                    )}
+                                                </Button>
+                                            );
+                                        })()}
                                         <Button 
                                             variant="ghost" 
                                             size="lg" 
