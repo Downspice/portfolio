@@ -50,7 +50,7 @@ export function Navbar() {
                 src="/joseph.png"
                 alt="Joseph Awer"
                 fill
-                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-300"
                 sizes="36px"
                 priority
               />
